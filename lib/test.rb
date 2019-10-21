@@ -1,4 +1,4 @@
-def main_screen
+def homepage
 
     puts `clear`
     puts "████████████████████████████████████████████████████"
