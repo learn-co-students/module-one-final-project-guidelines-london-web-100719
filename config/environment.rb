@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'io/console'
+require 'pry'
 Bundler.require
 
 ActiveRecord::Base.establish_connection(
