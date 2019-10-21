@@ -28,6 +28,7 @@ def main_screen
     user_input = gets.chomp
     
 end
+
 def blank_screen
 
     puts `clear`
@@ -55,6 +56,98 @@ def blank_screen
     puts "███████████████████████████████████████████████"
     puts ""
     puts "Enter the corresponding number:"
+    user_input = gets.chomp
+    
+end
+
+def splash_screen
+
+    def frame0
+        puts `clear`
+        puts "████████████████████████████████████████████████████"
+        puts "█                   *                          .   █"
+        puts "█     X                       X          *         █"
+        puts "█                 X                                █"
+        puts "█        X           .     X        X          X   █"
+        puts "█               *                                  █"
+        puts "█      X              X              *      .      █"
+        puts "█                               .                  █"
+        puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
+        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+        puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
+        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+        puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
+        puts "█                           *                      █"
+        puts "█      X          .                                █"
+        puts "█                *                     X           █"
+        puts "█                                             X    █"
+        puts "█                         X                        █"
+        puts "█     *        X         .            *            █"
+        puts "█                                     .            █"
+        puts "█         .                X                    *  █"
+        puts "████████████████████████████████████████████████████"
+    end
+    def frame1
+        puts `clear`
+        puts "████████████████████████████████████████████████████"
+        puts "█                   X               .              █"
+        puts "█     *     .                 X          X         █"
+        puts "█                 X                                █"
+        puts "█        X                 *        X          *   █"
+        puts "█               X                            .     █"
+        puts "█      *              *              X             █"
+        puts "█                                                  █"
+        puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
+        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+        puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
+        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+        puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
+        puts "█                           X                      █"
+        puts "█      *                      .                    █"
+        puts "█                *                     X           █"
+        puts "█                                             X    █"
+        puts "█                     .   *                        █"
+        puts "█     X        X                      X      .     █"
+        puts "█                                                  █"
+        puts "█        .                 X                    *  █"
+        puts "████████████████████████████████████████████████████"
+    end
+    def frame2
+        puts `clear`
+        puts "████████████████████████████████████████████████████"
+        puts "█                   X                .             █"
+        puts "█     *                   .   *          X         █"
+        puts "█                 *                                █"
+        puts "█        X                 X        X          *   █"
+        puts "█           .   X                                  █"
+        puts "█      *              X              X             █"
+        puts "█                                                  █"
+        puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
+        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+        puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
+        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+        puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
+        puts "█                           X                      █"
+        puts "█      *                                           █"
+        puts "█                X             .       *           █"
+        puts "█                                             X    █"
+        puts "█                         X                        █"
+        puts "█     X        *     .                *            █"
+        puts "█                                                  █"
+        puts "█          .               X                 .  *  █"
+        puts "████████████████████████████████████████████████████"
+    end
+
+    20.times do
+
+        frame0
+        sleep(0.1)
+        frame1
+        sleep(0.1)
+        frame2
+        sleep(0.1)
+    end
+    # puts "Enter the corresponding number:"
     user_input = gets.chomp
     
 end
