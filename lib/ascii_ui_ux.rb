@@ -476,6 +476,11 @@ def log_in_page
         puts "Please enter your username:"
     
         @user_name = gets.chomp
+
+        @user = User.all.find {|user| user.first_name == @user_name}
+        binding.pry
+        
+        
         # CHECK IF USER EXISTS
         # IF USER EXISTS
         @spaces = ""
