@@ -1,6 +1,13 @@
 require 'bundler/setup'
 require 'io/console'
 require 'pry'
+require 'require_all'
+require 'tty-prompt'
+require 'tty-box'
+require 'tty-screen'
+require 'tty-progressbar'
+require 'tty-reader'
+
 Bundler.require
 
 ActiveRecord::Base.establish_connection(

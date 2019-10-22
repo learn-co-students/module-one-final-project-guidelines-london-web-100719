@@ -13,3 +13,4 @@ Destination.create(name: "Kelly Schitz", destination_address: "cages.push.galaxy
 Destination.create(name: "Martin Katz", destination_address: "toxic.removing.myths")
 Destination.create(name: "Simon Slough", destination_address: "swerving.fancy.rectangular")
 Destination.create(name: "Bobby Banjo", destination_address: "eating.skirting.boot")
+Destination.create(name: "Bobby Shmurda", destination_address: "under.tower.bridge")
