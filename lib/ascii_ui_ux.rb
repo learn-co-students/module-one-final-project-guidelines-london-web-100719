@@ -1,30 +1,73 @@
+def blank_line
+
+    puts "█                                                  █"
+    
+end
+
+def solid_line
+
+    puts "████████████████████████████████████████████████████"
+    
+end
+
+def clear_screen
+
+    puts `clear`
+    
+end
 
 def blank_screen
 
     puts `clear`
     puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
+    blank_line
     puts "█                     DELIVERUU                    █"
-    puts "█                                                  █"
+    blank_line
     puts "█                - cheaper than DHL -              █"
-    puts "█                                                  █"
+    blank_line
     puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
+    blank_line
     puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
+    blank_line
+    blank_line
+    blank_line
     puts "████████████████████████████████████████████████████"
+    puts ""
+    
+end # DONE
+
+def title_bar
+
+    clear_screen
+    solid_line
+    blank_line
+    puts "█                     DELIVERUU                    █"
+    blank_line
+    puts "█                - cheaper than DHL -              █"
+    blank_line
+    solid_line
+    blank_line
+    
+end # DONE
+
+def status_bar(success_message = "█                                                  █")
+
+    blank_line
+    solid_line
+    blank_line
+    puts success_message
+    blank_line
+    solid_line
     puts ""
     
 end # DONE
@@ -66,7 +109,7 @@ def splash_screen
         puts "█        X                 *        X          *   █"
         puts "█               X                            .     █"
         puts "█      *              *              X             █"
-        puts "█                                                  █"
+        blank_line
         puts "█               X                                  █"
         puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
@@ -79,7 +122,7 @@ def splash_screen
         puts "█                                             X    █"
         puts "█                     .   *                        █"
         puts "█     X        X                      X      .     █"
-        puts "█                                                  █"
+        blank_line
         puts "█        .                 X                    *  █"
         puts "████████████████████████████████████████████████████"
     end
@@ -92,7 +135,7 @@ def splash_screen
         puts "█        X                 X        X          *   █"
         puts "█           .   X                                  █"
         puts "█      *              X              X             █"
-        puts "█                                                  █"
+        blank_line
         puts "█               *                                  █"
         puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
@@ -105,7 +148,7 @@ def splash_screen
         puts "█                                             X    █"
         puts "█                         X                        █"
         puts "█     X        *                      *            █"
-        puts "█                                                  █"
+        blank_line
         puts "█                          X                    *  █"
         puts "████████████████████████████████████████████████████"
     end
@@ -129,31 +172,17 @@ def homepage
 
     def text
 
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                     DELIVERUU                    █"
-        puts "█                                                  █"
-        puts "█                - cheaper than DHL -              █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
+        title_bar
+        blank_line
+        blank_line
         puts "█         1. Make a new delivery.                  █"
         puts "█         2. Check delivery status.                █"
         puts "█         3. See past deliveries.                  █"
         puts "█         4. Update delivery details.              █"
         puts "█         5. Cancel a delivery.                    █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts @success_line
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts ""
+        blank_line
+        blank_line
+        status_bar(@success_line)
         
     end
     text
@@ -235,34 +264,21 @@ def new_delivery
 
     @recepient_name = "█        ...........................               █"
     @recepient_address = "█        ...........................               █"
+    @success_line = "█                                                  █"
+    
+    def text
 
-    def ui
-
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                     DELIVERUU                    █"
-        puts "█                                                  █"
-        puts "█                - cheaper than DHL -              █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                                                  █"
+        title_bar
+        blank_line
         puts "█        1. RECEPIENT NAME:                        █"
-        puts "█                                                  █"
+        blank_line
         puts @recepient_name
-        puts "█                                                  █"
+        blank_line
         puts "█        1. RECEPIENT ADDRESS:                     █"
-        puts "█                                                  █"
+        blank_line
         puts @recepient_address
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts ""
+        blank_line
+        status_bar(@success_line)
         
     end
     
@@ -273,7 +289,7 @@ def new_delivery
         @dots = ""
         (27 - @user_input.length).times do @dots += "." end
         @recepient_name = "█        " + @user_input + @dots + "               █"
-        ui
+        text
         
     end
 
@@ -284,13 +300,13 @@ def new_delivery
         @dots = ""
         (27 - @user_input.length).times do @dots += "." end
         @recepient_address = "█        " + @user_input + @dots + "               █"
-        ui
+        text
         
     end
 
     def run
 
-        ui
+        text
         name
         address
         
@@ -302,121 +318,81 @@ end # UNFINISHED
 
 def delivery_status
 
-    puts `clear`
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                     DELIVERUU                    █"
-    puts "█                                                  █"
-    puts "█                - cheaper than DHL -              █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts ""
+    def text
+
+        title_bar
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        status_bar
+        
+    end
     
 end #UNFINISHED
 
 def past_deliveries
 
-    puts `clear`
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                     DELIVERUU                    █"
-    puts "█                                                  █"
-    puts "█                - cheaper than DHL -              █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts ""
+    def text
+
+        title_bar
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        status_bar
+        
+    end
     
 end #UNFINISHED
 
 def update_delivery
 
-    puts `clear`
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                     DELIVERUU                    █"
-    puts "█                                                  █"
-    puts "█                - cheaper than DHL -              █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts ""
+    def text
+
+        title_bar
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        status_bar
+        
+    end
     
 end #UNFINISHED
 
 def cancel_delivery
 
-    puts `clear`
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                     DELIVERUU                    █"
-    puts "█                                                  █"
-    puts "█                - cheaper than DHL -              █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "█                                                  █"
-    puts "████████████████████████████████████████████████████"
-    puts ""
+    def text
+
+        title_bar
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        blank_line
+        status_bar
+        
+    end
     
 end #UNFINISHED
 
@@ -424,56 +400,42 @@ def launch_page
 
     @success_line = "█                                                  █"
 
-    def ui
+    def text
 
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                     DELIVERUU                    █"
-        puts "█                                                  █"
-        puts "█                - cheaper than DHL -              █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
+        title_bar
+        blank_line
+        blank_line
+        blank_line
         puts "█        1. LOG IN                                 █"
-        puts "█                                                  █"
+        blank_line
         puts "█        2. SIGN UP                                █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts @success_line
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts ""
+        blank_line
+        blank_line
+        blank_line
+        status_bar(@success_line)
         
     end
-    ui
+    text
     puts "Please enter the corresponding number:"
     user_input = gets.chomp
 
-    def success
+    def success_status
 
-        @success_line = "█        Hacking into mainframe.                   █"
-        ui
+        @success_line = "█        Doing things and stuff.                   █"
+        text
         sleep(0.8)
-        @success_line = "█        Hacking into mainframe..                  █"
-        ui
+        @success_line = "█        Doing things and stuff..                  █"
+        text
         sleep(0.8)
-        @success_line = "█        Hacking into mainframe...                 █"
-        ui
+        @success_line = "█        Doing things and stuff...                 █"
+        text
         sleep(0.8)
         
     end
 
     if user_input == "1"
         
-        success
+        success_status
         log_in_page
         
     elsif user_input == "2"
@@ -485,7 +447,7 @@ def launch_page
         raise "big oopsie"
         
     end
-end
+end # UNFINISHED
 
 def log_in_page
     @username_line = "█         USERNAME:                                █"
@@ -493,31 +455,17 @@ def log_in_page
     @success_line = "█                                                  █"
     def text
 
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                     DELIVERUU                    █"
-        puts "█                                                  █"
-        puts "█                - cheaper than DHL -              █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
+        title_bar
+        blank_line
+        blank_line
         puts "#{@username_line}"
-        puts "█                                                  █"
-        puts "█                                                  █"
+        blank_line
+        blank_line
         puts "#{@password_line}"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts "█                                                  █"
-        puts "#{@success_line}"
-        puts "█                                                  █"
-        puts "████████████████████████████████████████████████████"
-        puts ""
+        blank_line
+        blank_line
+        blank_line
+        status_bar(@success_line)
 
         
     end
@@ -566,6 +514,27 @@ def log_in_page
     ask_password
     # @success_line = "█      BIG OOPSIE! RE-ENTER YOUR PASSWORD!         █"
     # sleep(1)
+    
+end # UNFINISHED
+
+def sign_up_page
+
+    @success_line = "█                                                  █"
+
+    def text
+
+        title_bar
+        blank_line
+        blank_line
+        puts
+        blank_line
+        blank_line
+        puts "#{@password_line}"
+        blank_line
+        blank_line
+        blank_line
+        
+    end
     
 end
 
