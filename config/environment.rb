@@ -1,6 +1,9 @@
 require 'bundler/setup'
 require 'io/console'
 require 'pry'
+require 'uri'
+require 'net/http'
+require 'json'
 Bundler.require
 
 ActiveRecord::Base.establish_connection(
