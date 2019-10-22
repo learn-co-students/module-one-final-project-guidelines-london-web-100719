@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
     
   end
 
-  def log_in(username)
-    
-
-  end
 
 end
 
