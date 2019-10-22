@@ -38,10 +38,13 @@ def title
     
 end
 
+@user = nil
+
 def splash
 
     title
     splash_loading_bar("Doing things and stuff", 60)
+    # binding.pry
     app_launch_page
 end
 
@@ -136,7 +139,8 @@ def log_in_page
     end
 
     splash_loading_bar("Logging into the mainframe", 40)
-
+    # binding.pry
+    @user = User.find_by(username: username)
     homepage
         
 
@@ -149,7 +153,7 @@ def sign_up_page
 end
 
 def homepage
-
+    puts @user
+    binding.pry
     "noice"
-    
 end
