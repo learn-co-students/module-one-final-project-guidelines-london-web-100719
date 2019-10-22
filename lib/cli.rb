@@ -1,43 +1,3 @@
-require 'pry'
-require "tty-prompt"
-require "tty-reader"
-
-
-@prompt = TTY::Prompt.new
-@reader = TTY::Reader.new
-
-@splash_box = TTY::Box.frame(
-    " ______   _______  ___      ___   __   __  _______  ______    __   __  __   __ ",
-    "|      | |       ||   |    |   | |  | |  ||       ||    _ |  |  | |  ||  | |  |",
-    "|  _    ||    ___||   |    |   | |  |_|  ||    ___||   | ||  |  | |  ||  | |  |",
-    "| | |   ||   |___ |   |    |   | |       ||   |___ |   |_||_ |  |_|  ||  |_|  |",
-    "| |_|   ||    ___||   |___ |   | |       ||    ___||    __  ||       ||       |",
-    "|       ||   |___ |       ||   |  |     | |   |___ |   |  | ||       ||       |",
-    "|______| |_______||_______||___|   |___|  |_______||___|  |_||_______||_______|",
-    padding: 5,
-    align: :center,
-    width: TTY::Screen.width,
-    height: 20,
-    title: {top_left: ' DELIVERUU ', bottom_right: ' faster than DHL '},
-    border: :thick
-)
-
-def splash_loading_bar(message, time)
-
-    puts ""
-    bar = TTY::ProgressBar.new("#{message} [:bar] :percent", total: time, width: TTY::Screen.width)
-    time.times {bar.advance; sleep(0.07)}
-    
-end
-
-def title
-
-    puts `clear`
-    print @splash_box
-    puts ""
-    
-end
-
 def splash
 
     title
@@ -92,7 +52,7 @@ def log_in_page
             title
             puts "Type 'home' at any point to return."
             puts ""
-            username = @prompt.ask('That username doesn\'t exist. Please re-enter your username:')
+            username = wrong_username
             user_real = User.all.find {|user| user.username == username}
 
         else
@@ -125,7 +85,7 @@ def log_in_page
             puts ""
             puts "USERNAME: #{username}"
             puts ""
-            password = @prompt.mask('Password incorrect. Please re-enter your password:')
+            password = wrong_password
 
         else
 
@@ -140,6 +100,18 @@ def log_in_page
     homepage
         
 
+end
+
+def wrong_username
+
+    @prompt.ask('That username doesn\'t exist. Please re-enter your username:')
+    
+end
+
+def wrong_password
+
+    @prompt.mask('Password incorrect. Please re-enter your password:')
+    
 end
 
 def sign_up_page
