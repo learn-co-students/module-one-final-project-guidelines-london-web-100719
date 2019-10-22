@@ -1,552 +1,552 @@
-def blank_line
+# def blank_line
 
-    puts "█                                                  █"
+#     puts "█                                                  █"
     
-end
+# end
 
-def solid_line
+# def solid_line
 
-    puts "████████████████████████████████████████████████████"
+#     puts "████████████████████████████████████████████████████"
     
-end
+# end
 
-def clear_screen
+# def clear_screen
 
-    puts `clear`
+#     puts `clear`
     
-end
+# end
 
-def blank_screen
+# def blank_screen
 
-    puts `clear`
-    puts "████████████████████████████████████████████████████"
-    blank_line
-    puts "█                     DELIVERUU                    █"
-    blank_line
-    puts "█                - cheaper than DHL -              █"
-    blank_line
-    puts "████████████████████████████████████████████████████"
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    blank_line
-    puts "████████████████████████████████████████████████████"
-    blank_line
-    blank_line
-    blank_line
-    puts "████████████████████████████████████████████████████"
-    puts ""
+#     puts `clear`
+#     puts "████████████████████████████████████████████████████"
+#     blank_line
+#     puts "█                     DELIVERUU                    █"
+#     blank_line
+#     puts "█                - cheaper than DHL -              █"
+#     blank_line
+#     puts "████████████████████████████████████████████████████"
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     blank_line
+#     puts "████████████████████████████████████████████████████"
+#     blank_line
+#     blank_line
+#     blank_line
+#     puts "████████████████████████████████████████████████████"
+#     puts ""
     
-end # DONE
+# end # DONE
 
-def title_bar
+# def title_bar
 
-    clear_screen
-    solid_line
-    blank_line
-    puts "█                     DELIVERUU                    █"
-    blank_line
-    puts "█                - cheaper than DHL -              █"
-    blank_line
-    solid_line
-    blank_line
+#     clear_screen
+#     solid_line
+#     blank_line
+#     puts "█                     DELIVERUU                    █"
+#     blank_line
+#     puts "█                - cheaper than DHL -              █"
+#     blank_line
+#     solid_line
+#     blank_line
     
-end # DONE
+# end # DONE
 
-def status_bar(success_message = "█                                                  █")
+# def status_bar(success_message = "█                                                  █")
 
-    blank_line
-    solid_line
-    blank_line
-    puts success_message
-    blank_line
-    solid_line
-    puts ""
+#     blank_line
+#     solid_line
+#     blank_line
+#     puts success_message
+#     blank_line
+#     solid_line
+#     puts ""
     
-end # DONE
+# end # DONE
 
-def splash_screen
+# def splash_screen
 
-    def frame0
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                   *                          .   █"
-        puts "█     X                       X          *         █"
-        puts "█                 X                                █"
-        puts "█        X           .     X        X          X   █"
-        puts "█               *                                  █"
-        puts "█      X              X              *      .      █"
-        puts "█                               .                  █"
-        puts "█               X                                  █"
-        puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
-        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
-        puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
-        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
-        puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
-        puts "█                           *                      █"
-        puts "█      X          .                                █"
-        puts "█                *                     X           █"
-        puts "█                                             X    █"
-        puts "█                         X                        █"
-        puts "█     *        X         .            *            █"
-        puts "█                                     .            █"
-        puts "█         .                X                    *  █"
-        puts "████████████████████████████████████████████████████"
-    end
-    def frame1
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                   X               .              █"
-        puts "█     *     .                 X          X         █"
-        puts "█                 X                                █"
-        puts "█        X                 *        X          *   █"
-        puts "█               X                            .     █"
-        puts "█      *              *              X             █"
-        blank_line
-        puts "█               X                                  █"
-        puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
-        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
-        puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
-        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
-        puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
-        puts "█                           X                      █"
-        puts "█      *                      .                    █"
-        puts "█                *                     X           █"
-        puts "█                                             X    █"
-        puts "█                     .   *                        █"
-        puts "█     X        X                      X      .     █"
-        blank_line
-        puts "█        .                 X                    *  █"
-        puts "████████████████████████████████████████████████████"
-    end
-    def frame2
-        puts `clear`
-        puts "████████████████████████████████████████████████████"
-        puts "█                   X                .             █"
-        puts "█     *                   .   *          X         █"
-        puts "█                 *                                █"
-        puts "█        X                 X        X          *   █"
-        puts "█           .   X                                  █"
-        puts "█      *              X              X             █"
-        blank_line
-        puts "█               *                                  █"
-        puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
-        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
-        puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
-        puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
-        puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
-        puts "█                           X                      █"
-        puts "█      *                                           █"
-        puts "█                X             .       *           █"
-        puts "█                                             X    █"
-        puts "█                         X                        █"
-        puts "█     X        *                      *            █"
-        blank_line
-        puts "█                          X                    *  █"
-        puts "████████████████████████████████████████████████████"
-    end
+#     def frame0
+#         puts `clear`
+#         puts "████████████████████████████████████████████████████"
+#         puts "█                   *                          .   █"
+#         puts "█     X                       X          *         █"
+#         puts "█                 X                                █"
+#         puts "█        X           .     X        X          X   █"
+#         puts "█               *                                  █"
+#         puts "█      X              X              *      .      █"
+#         puts "█                               .                  █"
+#         puts "█               X                                  █"
+#         puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
+#         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+#         puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
+#         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+#         puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
+#         puts "█                           *                      █"
+#         puts "█      X          .                                █"
+#         puts "█                *                     X           █"
+#         puts "█                                             X    █"
+#         puts "█                         X                        █"
+#         puts "█     *        X         .            *            █"
+#         puts "█                                     .            █"
+#         puts "█         .                X                    *  █"
+#         puts "████████████████████████████████████████████████████"
+#     end
+#     def frame1
+#         puts `clear`
+#         puts "████████████████████████████████████████████████████"
+#         puts "█                   X               .              █"
+#         puts "█     *     .                 X          X         █"
+#         puts "█                 X                                █"
+#         puts "█        X                 *        X          *   █"
+#         puts "█               X                            .     █"
+#         puts "█      *              *              X             █"
+#         blank_line
+#         puts "█               X                                  █"
+#         puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
+#         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+#         puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
+#         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+#         puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
+#         puts "█                           X                      █"
+#         puts "█      *                      .                    █"
+#         puts "█                *                     X           █"
+#         puts "█                                             X    █"
+#         puts "█                     .   *                        █"
+#         puts "█     X        X                      X      .     █"
+#         blank_line
+#         puts "█        .                 X                    *  █"
+#         puts "████████████████████████████████████████████████████"
+#     end
+#     def frame2
+#         puts `clear`
+#         puts "████████████████████████████████████████████████████"
+#         puts "█                   X                .             █"
+#         puts "█     *                   .   *          X         █"
+#         puts "█                 *                                █"
+#         puts "█        X                 X        X          *   █"
+#         puts "█           .   X                                  █"
+#         puts "█      *              X              X             █"
+#         blank_line
+#         puts "█               *                                  █"
+#         puts "█    ███   ███  █    █  █ █  ███  ██   █ █  █ █    █"
+#         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+#         puts "█    █  █  ███  █    █  █ █  ███  ██   █ █  █ █    █"
+#         puts "█    █  █  █    █    █  █ █  █    █ █  █ █  █ █    █"
+#         puts "█    ███   ███  ███  █   █   ███  █ █  ███  ███    █"
+#         puts "█                           X                      █"
+#         puts "█      *                                           █"
+#         puts "█                X             .       *           █"
+#         puts "█                                             X    █"
+#         puts "█                         X                        █"
+#         puts "█     X        *                      *            █"
+#         blank_line
+#         puts "█                          X                    *  █"
+#         puts "████████████████████████████████████████████████████"
+#     end
 
-    10.times do
+#     10.times do
 
-        frame0
-        sleep(0.1)
-        frame1
-        sleep(0.1)
-        frame2
-        sleep(0.1)
+#         frame0
+#         sleep(0.1)
+#         frame1
+#         sleep(0.1)
+#         frame2
+#         sleep(0.1)
 
-    end
+#     end
     
-end # DONE
+# end # DONE
 
-def homepage
+# def homepage
 
-    @success_line = "█                                                  █"
+#     @success_line = "█                                                  █"
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        puts "█         1. Make a new delivery.                  █"
-        puts "█         2. Check delivery status.                █"
-        puts "█         3. See past deliveries.                  █"
-        puts "█         4. Update delivery details.              █"
-        puts "█         5. Cancel a delivery.                    █"
-        blank_line
-        blank_line
-        status_bar(@success_line)
+#         title_bar
+#         blank_line
+#         blank_line
+#         puts "█         1. Make a new delivery.                  █"
+#         puts "█         2. Check delivery status.                █"
+#         puts "█         3. See past deliveries.                  █"
+#         puts "█         4. Update delivery details.              █"
+#         puts "█         5. Cancel a delivery.                    █"
+#         blank_line
+#         blank_line
+#         status_bar(@success_line)
         
-    end
-    text
-    puts "Enter the corresponding number:"
-    user_input = gets.chomp
+#     end
+#     text
+#     puts "Enter the corresponding number:"
+#     user_input = gets.chomp
 
-    case user_input
+#     case user_input
 
-    when "1"
-        @success_line = "█       Assembling delivery drone.                 █"
-        text
-        sleep(0.8)
-        @success_line = "█       Assembling delivery drone..                █"
-        text
-        sleep(0.8)
-        @success_line = "█       Assembling delivery drone...               █"
-        text
-        sleep(0.8)
-        new_delivery
+#     when "1"
+#         @success_line = "█       Assembling delivery drone.                 █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Assembling delivery drone..                █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Assembling delivery drone...               █"
+#         text
+#         sleep(0.8)
+#         new_delivery
         
-    when "2"
-        @success_line = "█       Looking through billions of deliveries.    █"
-        text
-        sleep(0.8)
-        @success_line = "█       Looking through billions of deliveries..   █"
-        text
-        sleep(0.8)
-        @success_line = "█       Looking through billions of deliveries...  █"
-        text
-        sleep(0.8)
-        delivery_status
+#     when "2"
+#         @success_line = "█       Looking through billions of deliveries.    █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Looking through billions of deliveries..   █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Looking through billions of deliveries...  █"
+#         text
+#         sleep(0.8)
+#         delivery_status
         
-    when "3"
-        @success_line = "█       Turning back the time.                     █"
-        text
-        sleep(0.8)
-        @success_line = "█       Turning back the time..                    █"
-        text
-        sleep(0.8)
-        @success_line = "█       Turning back the time...                   █"
-        text
-        sleep(0.8)
-        past_deliveries
+#     when "3"
+#         @success_line = "█       Turning back the time.                     █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Turning back the time..                    █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Turning back the time...                   █"
+#         text
+#         sleep(0.8)
+#         past_deliveries
         
-    when "4"
-        @success_line = "█       Assembling delivery drone.                 █"
-        text
-        sleep(0.8)
-        @success_line = "█       Assembling delivery drone..                █"
-        text
-        sleep(0.8)
-        @success_line = "█       Assembling delivery drone...               █"
-        text
-        sleep(0.8)
-        update_delivery
+#     when "4"
+#         @success_line = "█       Assembling delivery drone.                 █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Assembling delivery drone..                █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Assembling delivery drone...               █"
+#         text
+#         sleep(0.8)
+#         update_delivery
         
-    when "5"
-        @success_line = "█       Assembling delivery drone.                 █"
-        text
-        sleep(0.8)
-        @success_line = "█       Assembling delivery drone..                █"
-        text
-        sleep(0.8)
-        @success_line = "█       Assembling delivery drone...               █"
-        text
-        sleep(0.8)
-        cancel_delivery
+#     when "5"
+#         @success_line = "█       Assembling delivery drone.                 █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Assembling delivery drone..                █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█       Assembling delivery drone...               █"
+#         text
+#         sleep(0.8)
+#         cancel_delivery
         
-    else
+#     else
 
-        puts "Please enter a valid option from 1 to 5"
-        user_input = gets.chomp
+#         puts "Please enter a valid option from 1 to 5"
+#         user_input = gets.chomp
         
-    end
+#     end
     
-end
+# end
 
-def new_delivery
+# def new_delivery
 
-    @recepient_name = "█        ...........................               █"
-    @recepient_address = "█        ...........................               █"
-    @success_line = "█                                                  █"
+#     @recepient_name = "█        ...........................               █"
+#     @recepient_address = "█        ...........................               █"
+#     @success_line = "█                                                  █"
     
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        puts "█        1. RECEPIENT NAME:                        █"
-        blank_line
-        puts @recepient_name
-        blank_line
-        puts "█        1. RECEPIENT ADDRESS:                     █"
-        blank_line
-        puts @recepient_address
-        blank_line
-        status_bar(@success_line)
+#         title_bar
+#         blank_line
+#         puts "█        1. RECEPIENT NAME:                        █"
+#         blank_line
+#         puts @recepient_name
+#         blank_line
+#         puts "█        1. RECEPIENT ADDRESS:                     █"
+#         blank_line
+#         puts @recepient_address
+#         blank_line
+#         status_bar(@success_line)
         
-    end
+#     end
     
-    def name
+#     def name
 
-        puts "Please enter the recepient name:"
-        @user_input = gets.chomp
-        @dots = ""
-        (27 - @user_input.length).times do @dots += "." end
-        @recepient_name = "█        " + @user_input + @dots + "               █"
-        text
+#         puts "Please enter the recepient name:"
+#         @user_input = gets.chomp
+#         @dots = ""
+#         (27 - @user_input.length).times do @dots += "." end
+#         @recepient_name = "█        " + @user_input + @dots + "               █"
+#         text
         
-    end
+#     end
 
-    def address
+#     def address
 
-        puts "Please enter the recepient address:"
-        @user_input = gets.chomp
-        @dots = ""
-        (27 - @user_input.length).times do @dots += "." end
-        @recepient_address = "█        " + @user_input + @dots + "               █"
-        text
+#         puts "Please enter the recepient address:"
+#         @user_input = gets.chomp
+#         @dots = ""
+#         (27 - @user_input.length).times do @dots += "." end
+#         @recepient_address = "█        " + @user_input + @dots + "               █"
+#         text
         
-    end
+#     end
 
-    def run
+#     def run
 
-        text
-        name
-        address
+#         text
+#         name
+#         address
         
-    end
+#     end
 
-    run
+#     run
 
-end # UNFINISHED
+# end # UNFINISHED
 
-def delivery_status
+# def delivery_status
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        status_bar
+#         title_bar
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         status_bar
         
-    end
+#     end
     
-end #UNFINISHED
+# end #UNFINISHED
 
-def past_deliveries
+# def past_deliveries
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        status_bar
+#         title_bar
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         status_bar
         
-    end
+#     end
     
-end #UNFINISHED
+# end #UNFINISHED
 
-def update_delivery
+# def update_delivery
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        status_bar
+#         title_bar
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         status_bar
         
-    end
+#     end
     
-end #UNFINISHED
+# end #UNFINISHED
 
-def cancel_delivery
+# def cancel_delivery
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        blank_line
-        status_bar
+#         title_bar
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         blank_line
+#         status_bar
         
-    end
+#     end
     
-end #UNFINISHED
+# end #UNFINISHED
 
-def launch_page
+# def launch_page
 
-    @success_line = "█                                                  █"
+#     @success_line = "█                                                  █"
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        blank_line
-        puts "█        1. LOG IN                                 █"
-        blank_line
-        puts "█        2. SIGN UP                                █"
-        blank_line
-        blank_line
-        blank_line
-        status_bar(@success_line)
+#         title_bar
+#         blank_line
+#         blank_line
+#         blank_line
+#         puts "█        1. LOG IN                                 █"
+#         blank_line
+#         puts "█        2. SIGN UP                                █"
+#         blank_line
+#         blank_line
+#         blank_line
+#         status_bar(@success_line)
         
-    end
-    text
-    puts "Please enter the corresponding number:"
-    user_input = gets.chomp
+#     end
+#     text
+#     puts "Please enter the corresponding number:"
+#     user_input = gets.chomp
 
-    def success_status
+#     def success_status
 
-        @success_line = "█        Doing things and stuff.                   █"
-        text
-        sleep(0.8)
-        @success_line = "█        Doing things and stuff..                  █"
-        text
-        sleep(0.8)
-        @success_line = "█        Doing things and stuff...                 █"
-        text
-        sleep(0.8)
+#         @success_line = "█        Doing things and stuff.                   █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█        Doing things and stuff..                  █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█        Doing things and stuff...                 █"
+#         text
+#         sleep(0.8)
         
-    end
+#     end
 
-    if user_input == "1"
+#     if user_input == "1"
         
-        success_status
-        log_in_page
+#         success_status
+#         log_in_page
         
-    elsif user_input == "2"
+#     elsif user_input == "2"
 
-        puts "u entered 2"
+#         puts "u entered 2"
         
-    else
+#     else
 
-        raise "big oopsie"
+#         raise "big oopsie"
         
-    end
-end # UNFINISHED
+#     end
+# end # UNFINISHED
 
-def log_in_page
-    @username_line = "█         USERNAME:                                █"
-    @password_line = "█         PASSWORD:                                █"
-    @success_line = "█                                                  █"
-    def text
+# def log_in_page
+#     @username_line = "█         USERNAME:                                █"
+#     @password_line = "█         PASSWORD:                                █"
+#     @success_line = "█                                                  █"
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        puts "#{@username_line}"
-        blank_line
-        blank_line
-        puts "#{@password_line}"
-        blank_line
-        blank_line
-        blank_line
-        status_bar(@success_line)
+#         title_bar
+#         blank_line
+#         blank_line
+#         puts "#{@username_line}"
+#         blank_line
+#         blank_line
+#         puts "#{@password_line}"
+#         blank_line
+#         blank_line
+#         blank_line
+#         status_bar(@success_line)
 
         
-    end
+#     end
 
-    def ask_username
+#     def ask_username
 
-        text
-        puts "Please enter your username:"
+#         text
+#         puts "Please enter your username:"
     
-        @user_name = gets.chomp
+#         @user_name = gets.chomp
 
-        @user = User.all.find {|user| user.first_name == @user_name}
-        binding.pry
+#         @user = User.all.find {|user| user.first_name == @user_name}
+#         binding.pry
         
         
-        # CHECK IF USER EXISTS
-        # IF USER EXISTS
-        @spaces = ""
-        (31 - @user_name.length).times do @spaces += " " end
-        @username_line = "█         USERNAME: " + @user_name + @spaces + "█"
-        text
+#         # CHECK IF USER EXISTS
+#         # IF USER EXISTS
+#         @spaces = ""
+#         (31 - @user_name.length).times do @spaces += " " end
+#         @username_line = "█         USERNAME: " + @user_name + @spaces + "█"
+#         text
         
-    end
+#     end
 
-    def ask_password
+#     def ask_password
     
-        puts "Please enter your password:"
+#         puts "Please enter your password:"
 
-        password = STDIN.noecho(&:gets).chomp
+#         password = STDIN.noecho(&:gets).chomp
 
-        @password_line = "█         PASSWORD: ********                       █"
+#         @password_line = "█         PASSWORD: ********                       █"
 
-        @success_line = "█         SUCCESS! LOGGING IN.                     █"
-        text
-        sleep(1.1)
-        @success_line = "█         SUCCESS! LOGGING IN..                    █"
-        text
-        sleep(0.8)
-        @success_line = "█         SUCCESS! LOGGING IN...                   █"
-        text
-        sleep(0.8)
+#         @success_line = "█         SUCCESS! LOGGING IN.                     █"
+#         text
+#         sleep(1.1)
+#         @success_line = "█         SUCCESS! LOGGING IN..                    █"
+#         text
+#         sleep(0.8)
+#         @success_line = "█         SUCCESS! LOGGING IN...                   █"
+#         text
+#         sleep(0.8)
 
-        # puts `io.stdin.echoMode = false`
-        # @user_password = gets.chomp
-        # IF PASSWORD MATCHES THAT USERNAME, BRING UP THE HOMEPAGE
-        # IF NOT THEN RE-PROMPT FOR PASSWORD AGAIN
+#         # puts `io.stdin.echoMode = false`
+#         # @user_password = gets.chomp
+#         # IF PASSWORD MATCHES THAT USERNAME, BRING UP THE HOMEPAGE
+#         # IF NOT THEN RE-PROMPT FOR PASSWORD AGAIN
         
-    end
+#     end
 
-    ask_username
-    ask_password
-    # @success_line = "█      BIG OOPSIE! RE-ENTER YOUR PASSWORD!         █"
-    # sleep(1)
+#     ask_username
+#     ask_password
+#     # @success_line = "█      BIG OOPSIE! RE-ENTER YOUR PASSWORD!         █"
+#     # sleep(1)
     
-end # UNFINISHED
+# end # UNFINISHED
 
-def sign_up_page
+# def sign_up_page
 
-    @success_line = "█                                                  █"
+#     @success_line = "█                                                  █"
 
-    def text
+#     def text
 
-        title_bar
-        blank_line
-        blank_line
-        puts
-        blank_line
-        blank_line
-        puts "#{@password_line}"
-        blank_line
-        blank_line
-        blank_line
+#         title_bar
+#         blank_line
+#         blank_line
+#         puts
+#         blank_line
+#         blank_line
+#         puts "#{@password_line}"
+#         blank_line
+#         blank_line
+#         blank_line
         
-    end
+#     end
     
-end
+# end
 
-def app
+# def app
 
-    splash_screen
-    launch_page
-    homepage
+#     splash_screen
+#     launch_page
+#     homepage
     
-end
+# end
