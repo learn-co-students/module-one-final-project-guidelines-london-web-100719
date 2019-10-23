@@ -242,8 +242,7 @@ def sign_up_page
         last_name: last_name,
         username: username,
         password: password,
-        origin_address: origin_address
-    }
+        origin_address: origin_address}
 
     @user = User.create(h1)
     homepage
