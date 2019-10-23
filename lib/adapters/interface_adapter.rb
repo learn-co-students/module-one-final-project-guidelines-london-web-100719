@@ -167,10 +167,25 @@ def sign_up_page
 
     username = @prompt.ask('Please choose a username:')
 
-    if username == "home"
+    user_real = User.all.find {|user| user.username == username}.username
 
-        return app_launch_page
-        
+    loop do
+
+        if username == "home"
+
+            return app_launch_page
+
+        elsif user_real == username
+            
+            user_real = User.all.find {|user| user.username == username}.username
+            username = @prompt.ask('That username is already in use! Enter a new one:')
+
+        else
+
+            break
+                
+        end
+
     end
 
     password = @prompt.mask('Please type in a password:')
