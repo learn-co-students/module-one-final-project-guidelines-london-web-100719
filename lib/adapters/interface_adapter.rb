@@ -8,12 +8,12 @@ require "tty-reader"
 
 @splash_box = TTY::Box.frame(
     " ______   _______  ___      ___   __   __  _______  ______    __   __  __   __ ",
-    "|██████| |███████||███|    |███| |██| |██||███████||██████|  |  | |  ||  | |  |",
-    "|███████||███████||███|    |███| |██|_|██||███████||███| █|  |  | |  ||  | |  |",
-    "|█| |███||███|___ |███|    |███| |███████||███|___ |███|_█|_ |  |_|  ||  |_|  |",
-    "|█|_|███||███████||███|___ |███| |███████||███████||████████||       ||       |",
-    "|███████||███|___ |███████||███|  |█████| |███|___ |███|  |█||       ||       |",
-    "|██████| |███████||███████||███|   |███|  |███████||███|  |█||_______||_______|",
+    "|██████| |███████||███|    |███| |██| |██||███████||██████|  |██| |██||██| |██|",
+    "|███████||███████||███|    |███| |██|_|██||███████||███| █|  |██| |██||██| |██|",
+    "|█| |███||███|___ |███|    |███| |███████||███|___ |███|_█|_ |██|_|██||██|_|██|",
+    "|█|_|███||███████||███|___ |███| |███████||███████||████████||███████||███████|",
+    "|███████||███|___ |███████||███|  |█████| |███|___ |███|  |█||███████||███████|",
+    "|██████| |███████||███████||███|   |███|  |███████||███|  |█||███████||███████|",
     padding: 5,
     align: :center,
     width: TTY::Screen.width,
@@ -44,8 +44,8 @@ def splash
 
     title
     splash_loading_bar("Doing things and stuff", 60)
-    # binding.pry
     app_launch_page
+
 end
 
 def app_launch_page
@@ -74,10 +74,6 @@ end
 
 def log_in_page
 
-    # reader.on(:keyescape) do app_launch_page end
-    @reader.on(:keyctrl_q) do
-        return
-    end
     title
     puts "Type 'home' at any point to return."
     puts ""
@@ -147,8 +143,95 @@ def log_in_page
 end
 
 def sign_up_page
-
+    
     title
+
+    puts "Type 'home' at any point to return."
+    puts ""
+    
+    first_name = @prompt.ask('What is your first name?').tr( '^A-Za-z\-', '' )
+
+    if first_name == "home"
+
+        return app_launch_page
+        
+    end
+
+    last_name = @prompt.ask('What is your last name?').tr( '^A-Za-z\-', '' )
+
+    if last_name == "home"
+
+        return app_launch_page
+        
+    end
+
+    username = @prompt.ask('Please choose a username:')
+
+    if username == "home"
+
+        return app_launch_page
+        
+    end
+
+    password = @prompt.mask('Please type in a password:')
+
+    if password == "home"
+
+        return app_launch_page
+        
+    end
+
+    repeat_password = @prompt.mask('Please repeat your password:')
+
+    loop do
+
+        if repeat_password == "home"
+                
+            return app_launch_page
+                
+        elsif repeat_password != password
+
+            repeat_password = @prompt.mask('The password doesn\'t match! Re-enter your password!')
+            
+        else
+
+            break
+
+        end
+
+    end
+    
+    have_address = @prompt.yes?('Do you have your what3words address?')
+
+    if !have_address
+
+        puts ""
+        puts "You'll be redirecred to the what3words website to find your address."
+        puts "When you have it, please come back and enter it here."
+        sleep(8)
+        puts `open https://what3words.com/`
+        sleep(2)
+
+    end
+
+    origin_address = @prompt.ask('What is your what3words address?').tr!('/', '')
+
+    if origin_address == "home"
+
+        return app_launch_page
+        
+    end
+
+    h1 = {
+        first_name: first_name,
+        last_name: last_name,
+        username: username,
+        password: password,
+        origin_address: origin_address
+    }
+
+    @user = User.create(h1)
+    homepage
     
 end
 
