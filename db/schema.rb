@@ -10,26 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 1) do
 
   create_table "deliveries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "destination_id"
     t.string "status"
     t.string "description"
+    t.float "distance"
+    t.float "cost"
+    t.string "speed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "destinations", force: :cascade do |t|
-    t.string "destination_address"
     t.string "name"
+    t.string "destination_address"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
     t.string "first_name"
     t.string "last_name"
     t.string "origin_address"
-    t.string "password"
-    t.string "username"
   end
 
 end

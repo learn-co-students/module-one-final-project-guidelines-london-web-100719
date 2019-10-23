@@ -348,6 +348,7 @@ def delivery_status
         menu.choices formatted_deliveries
     
     end
+    
     delivery_id = chosen_delivery.split("id: ")[1].to_i
     puts ""
     puts "Your delivery is #{Delivery.find_by(id: delivery_id).status}."
@@ -364,7 +365,7 @@ end
 
 def past_deliveries
 
-
+    @user.deliveries.select {|d| d.status == "delivered"}
 
 end
 
