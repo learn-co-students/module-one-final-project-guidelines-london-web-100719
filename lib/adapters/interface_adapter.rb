@@ -235,6 +235,25 @@ def sign_up_page
         
     end
 
+    loop do
+
+      if origin_address == "home"
+
+        return app_launch_page
+
+      elsif get_coordinates(origin_address) == "error"
+
+        origin_address = @prompt.ask('Not a valid What3words address, enter again: ').tr('/', '')        
+
+      else
+
+          break
+              
+      end
+
+  end
+
+
     h1 = {
         first_name: first_name,
         last_name: last_name,
