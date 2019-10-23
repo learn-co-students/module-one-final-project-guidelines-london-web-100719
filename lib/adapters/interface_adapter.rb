@@ -336,7 +336,7 @@ def delivery_status
 
     formatted_deliveries = @user.deliveries.map do |element|
     
-        "Delivery to: #{element.destination.name} at #{element.destination.destination_address} containing #{element.description} - id: #{element.id}"
+        "Delivery to: #{element.destination.name} at #{element.destination.destination_address}, containing #{element.description} - id: #{element.id}"
 
     end
 
