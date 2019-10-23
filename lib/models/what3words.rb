@@ -52,5 +52,7 @@ dist.round(2).to_s + "km"
 
 end
 
+
+
 puts get_distance_between("fence.gross.bats", "salad.likening.sprinting")
 # system 'open https://what3words.com'
