@@ -277,8 +277,23 @@ def homepage
 end
 
 def new_delivery
-  puts "worked"
-  binding.pry
+
+  title
+  puts "Type 'back' at any point to return."
+    puts ""
+    
+    name = @prompt.ask('Who are you sending your package to?')
+    destination = @prompt.ask('What is the What3words address that you are sending it to?')
+    description = @prompt.ask('Type a short description of the contents of your delivery:')
+    
+    del = Delivery.all.find_by(user_id: @user.id)
+    del.description = description
+
+    des = Destination.find_or_create_by({name: name, destination_address: destination})
+    @user.destinations << des
+
+    binding.pry
+  
 end
 
 def delivery_status

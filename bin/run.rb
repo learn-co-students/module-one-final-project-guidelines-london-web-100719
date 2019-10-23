@@ -1,4 +1,5 @@
 require_relative '../config/environment'
 ActiveRecord::Base.logger = nil
-splash
+# splash
+app_launch_page
 binding.pry
