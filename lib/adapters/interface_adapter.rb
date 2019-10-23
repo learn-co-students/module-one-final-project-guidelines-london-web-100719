@@ -214,7 +214,7 @@ def sign_up_page
 
     end
 
-    origin_address = @prompt.ask('What is your what3words address?').tr!('/', '')
+    origin_address = @prompt.ask('What is your what3words address?').tr('/', '')
 
     if origin_address == "home"
 
