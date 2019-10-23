@@ -279,20 +279,35 @@ end
 def new_delivery
 
   title
-  puts "Type 'back' at any point to return."
+  puts "Type 'back' at any point to return or restart."
     puts ""
     
     name = @prompt.ask('Who are you sending your package to?')
+    homepage if name == "back"
     destination = @prompt.ask('What is the What3words address that you are sending it to?')
+    homepage if destination == "back"
     description = @prompt.ask('Type a short description of the contents of your delivery:')
-    
-    del = Delivery.all.find_by(user_id: @user.id)
-    del.description = description
+    homepage if description == "back"
 
     des = Destination.find_or_create_by({name: name, destination_address: destination})
     @user.destinations << des
+    del = Delivery.all.last
+    del.description = description
+    del.status = "In transit"
+    del.save
+    puts ""
+    puts "Your delivery is pending, please wait."
+    sleep(3)
+    splash_loading_bar("A courier is breaking into your house", 40)
+    puts ""
+    puts "The courier has the goodies"
+    sleep(3)
+    splash_loading_bar("Pre-damaging your shipment", 40)
+    puts ""
+    puts "Your delivery is on its way!"
+    sleep(5)
 
-    binding.pry
+    homepage
   
 end
 
