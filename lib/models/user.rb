@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
             
             user.update({password: "pass"})
 
-    end
+      end
     
-  end
+    end
 
 
     def self.update_usernames
