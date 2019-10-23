@@ -300,6 +300,24 @@ end
 
 def delivery_status
 
+    title
+
+    formatted_deliveries = @user.deliveries.map do |element|
+    
+        element.id
+
+    end
+
+    @prompt.select("Which delivery?") do |menu|
+    
+        menu.per_page 4
+        menu.help '(Use ↑/↓ to choose, and ←/→ arrow keys to change pages, press Enter to select)'
+        menu.enum '.'
+        menu.choices formatted_deliveries
+    
+
+    end
+    # binding.pry
 
 
 end
