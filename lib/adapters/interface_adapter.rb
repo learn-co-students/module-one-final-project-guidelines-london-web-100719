@@ -55,6 +55,7 @@ def app_launch_page
         menu.enum '.'
         menu.choice 'Log In', 1
         menu.choice 'Sign Up', 2
+        menu.choice 'Quit', 3
 
     end
 
@@ -66,6 +67,13 @@ def app_launch_page
 
         sign_up_page
 
+    else
+
+        puts `echo -n -e "\033]0;My Window Name\007"`
+        puts `osascript -e 'tell application "Terminal" to close (every window whose name contains "My Window Name")' &`
+
+        # CODE USED FROM https://stackoverflow.com/revisions/27970527/1
+        
     end
 
 end
