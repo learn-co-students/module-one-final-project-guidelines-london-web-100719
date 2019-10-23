@@ -48,7 +48,7 @@ def get_distance_between(origin_address, dest_address)
 a_one = get_coordinates(origin_address)
 a_two = get_coordinates(dest_address)
 dist = get_distance(a_one, a_two)
-dist.round(2).to_s + "km"
+dist.round(2)
 
 end
 

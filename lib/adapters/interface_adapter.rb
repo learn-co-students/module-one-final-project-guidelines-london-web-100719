@@ -307,13 +307,38 @@ def new_delivery
     homepage if destination == "back"
     description = @prompt.ask('Type a short description of the contents of your delivery:')
     homepage if description == "back"
+    user_input = @prompt.select('Choose your speed option:') do |menu|
+      menu.enum '.'
+      menu.choice 'Standard', 1
+      menu.choice 'Express', 2 #, disabled: '(out of stock)'
+      menu.choice 'Lightning', 3
+      end
 
     des = Destination.find_or_create_by({name: name, destination_address: destination})
     @user.destinations << des
     del = Delivery.all.last
     del.description = description
     del.status = "in transit"
+    del.speed = speed_option(user_input)[:type]
+
+    del.distance = get_distance_between(@user.origin_address, del.destination.destination_address)
+
+    del.cost = del.distance * speed_option(user_input)[:cost_mult]
     del.save
+
+    choice = @prompt.yes?("At a delivery distance of #{del.distance}km, the price at this speed option is £#{del.cost} is that acceptable?")
+    binding.pry
+
+    # loop do
+    #   if   choice == false
+              del.delete
+              
+    #   elsif 
+          
+    #   else
+    #       break    
+    #   end
+  
     puts ""
     puts "Your delivery is pending, please wait."
     sleep(3)
