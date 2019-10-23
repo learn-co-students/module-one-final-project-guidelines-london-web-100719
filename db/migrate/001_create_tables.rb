@@ -4,6 +4,8 @@ class CreateTables < ActiveRecord::Migration[5.2]
 
         create_table(:users) do |t|
 
+            t.string :username
+            t.string :password
             t.string :first_name
             t.string :last_name
             t.string :origin_address
@@ -12,6 +14,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
         
         create_table(:destinations) do |t|
 
+            t.string :name
             t.string :destination_address
             
         end
@@ -20,6 +23,13 @@ class CreateTables < ActiveRecord::Migration[5.2]
 
             t.integer :user_id
             t.integer :destination_id
+            t.string :status
+            t.string :description
+            t.float :distance
+            t.float :cost
+            t.string :speed
+            
+            t.timestamps
             
         end
         
