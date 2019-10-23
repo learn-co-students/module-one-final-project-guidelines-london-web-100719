@@ -425,11 +425,12 @@ def new_delivery
 
     loop do
 
+
         response = @prompt.yes?("At a delivery distance of #{created_delivery.distance}km, the price at this speed option is £#{created_delivery.cost} is that acceptable?")
 
         if response
 
-            
+            created_delivery.save
             break
             
         else
@@ -442,6 +443,7 @@ def new_delivery
                 
             end
 
+            created_delivery.cost = (created_delivery.distance * speed_option(new_input)[:cost_mult]).round(2)
             created_delivery.speed = speed_option(new_input)[:type]
             
         end
@@ -489,6 +491,7 @@ def delivery_status
     puts "Your delivery is #{delivery.status}."
     puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
     puts "Cost: $#{delivery.cost}"
+    puts "Shipment method: $#{delivery.speed}"
     puts "Initialized on: #{delivery.created_at}"
     puts "Contents: #{delivery.description}"
     puts ""
