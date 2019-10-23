@@ -294,12 +294,81 @@ def homepage
 
 end
 
+# def new_delivery
+
+
+#     des = Destination.find_or_create_by({name: name, destination_address: destination})
+#     @user.destinations << des
+
+#     del = Delivery.all.last
+
+#     def fill_del_details(user_input, del, description)
+
+#         del.description = description
+#         del.status = "in transit"
+#         del.speed = speed_option(user_input)[:type]
+#         del.distance = get_distance_between(@user.origin_address, del.destination.destination_address)
+#         del.cost = (del.distance * speed_option(user_input)[:cost_mult]).round(2)
+        
+#     end
+
+#     fill_del_details(user_input, del, description)
+
+#     def choice(del)
+
+#         @prompt.yes?("At a delivery distance of #{del.distance}km, the price at this speed option is £#{del.cost} is that acceptable?")
+
+#     end
+    
+#     fill_del_details(user_input, del, description)
+  
+#     loop do
+
+#         if choice(del)
+#             fill_del_details(user_input, del, description)
+#             break
+
+#         else
+
+#             new_user_input = speed_prompt
+#             fill_del_details(new_user_input, del, description)
+
+#             if new_user_input == 4
+                
+#                 Delivery.all.last.destroy
+#                 binding.pry
+#                 break homepage
+                
+#             end
+            
+#         end
+        
+#     end
+    
+#     # del.save
+  
+#     puts ""
+#     puts "Your delivery is pending, please wait."
+#     sleep(3)
+#     splash_loading_bar("A courier is breaking into your house", 40)
+#     puts ""
+#     puts "The courier has the goodies!"
+#     sleep(3)
+#     splash_loading_bar("Pre-damaging your shipment", 40)
+#     puts ""
+#     puts "Your delivery is on its way!"
+#     sleep(4)
+#     homepage
+    
+  
+# end
+
 def new_delivery
 
     title
     puts "Type 'back' at any point to return or restart."
     puts ""
-    
+
     name = @prompt.ask('Who are you sending your package to?')
     homepage if name == "back"
     destination = @prompt.ask('What is the What3words address that you are sending it to?')
@@ -308,56 +377,58 @@ def new_delivery
     homepage if description == "back"
 
     def speed_prompt
+
         @prompt.select('Choose your speed option:') do |menu|
+            
             menu.enum '.'
             menu.choice 'Standard', 1
             menu.choice 'Express', 2 #, disabled: '(out of stock)'
             menu.choice 'Lightning', 3
-        end
-    end
-
-    user_input = speed_prompt
-
-    des = Destination.find_or_create_by({name: name, destination_address: destination})
-    @user.destinations << des
-
-    del = Delivery.all.last
-
-    def fill_del_details(user_input, del, description)
-
-        del.description = description
-        del.status = "in transit"
-        del.speed = speed_option(user_input)[:type]
-        del.distance = get_distance_between(@user.origin_address, del.destination.destination_address)
-        del.cost = (del.distance * speed_option(user_input)[:cost_mult]).round(2)
-        
-    end
-
-    def choice(del)
-
-        @prompt.yes?("At a delivery distance of #{del.distance}km, the price at this speed option is £#{del.cost} is that acceptable?")
-
-    end
-    
-    fill_del_details(user_input, del, description)
-  
-    loop do
-
-        if choice(del)
-            fill_del_details(user_input, del, description)
-            break
-
-        else
-
-            new_user_input = speed_prompt
-            fill_del_details(new_user_input, del, description)
+            menu.choice 'Cancel new delivery', 4
             
         end
         
     end
+
+    user_input = speed_prompt
+
+    return homepage if user_input == 4
+
+    destination_instance = Destination.find_or_create_by({name: name, destination_address: destination})
     
-    del.save
-  
+    @user.destinations << destination_instance
+    created_delivery = Delivery.all.last
+
+    created_delivery.status = "in transit"
+    created_delivery.description = description
+    created_delivery.distance = get_distance_between(@user.origin_address, created_delivery.destination.destination_address)
+    created_delivery.cost = (created_delivery.distance * speed_option(user_input)[:cost_mult]).round(2)
+
+    loop do
+
+        response = @prompt.yes?("At a delivery distance of #{created_delivery.distance}km, the price at this speed option is £#{created_delivery.cost} is that acceptable?")
+
+        if response
+
+            
+            break
+            
+        else
+            new_input = speed_prompt
+
+            if new_input == 4
+
+                Delivery.all.last.destroy
+                break homepage
+                
+            end
+
+            created_delivery.speed = speed_option(new_input)[:type]
+            
+        end
+        
+    end
+
     puts ""
     puts "Your delivery is pending, please wait."
     sleep(3)
@@ -370,21 +441,15 @@ def new_delivery
     puts "Your delivery is on its way!"
     sleep(4)
     homepage
-    
-  
-end
-
-def choose_speed 
-
-
 
 end
 
 def delivery_status
 
     title
+    deliveries_array = Delivery.all.where(user_id: @user.id)
 
-    formatted_deliveries = @user.deliveries.map do |element|
+    formatted_deliveries = deliveries_array.map do |element|
     
         "Delivery to: #{element.destination.name} at #{element.destination.destination_address} - id: #{element.id}"
 
@@ -399,7 +464,7 @@ def delivery_status
     
     end
     
-    delivery_id = chosen_delivery.split("id: ").last.to_i
+    delivery_id = chosen_delivery.split("id: ")[-1].to_i
     delivery = Delivery.find_by(id: delivery_id)
     puts ""
     puts "Your delivery is #{delivery.status}."
