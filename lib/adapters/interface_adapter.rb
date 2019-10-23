@@ -296,10 +296,6 @@ def homepage
 end
 
 def new_delivery
-
-    puts "worked"
-    binding.pry
-
 end
 
 def delivery_status
