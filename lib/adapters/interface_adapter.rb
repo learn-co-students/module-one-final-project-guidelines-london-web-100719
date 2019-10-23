@@ -38,8 +38,6 @@ def title
     
 end
 
-@user = nil
-
 def splash
 
     title
@@ -49,7 +47,7 @@ def splash
 end
 
 def app_launch_page
-
+    @user = nil
     title
 
     user_choice = @prompt.select("Choose an option:") do |menu|
@@ -250,7 +248,47 @@ def sign_up_page
 end
 
 def homepage
-    puts @user
-    binding.pry
-    "noice"
+    title
+    user_input = @prompt.select('Choose your option:') do |menu|
+      menu.enum '.'
+      menu.choice 'Create new delivery', 1
+      menu.choice 'Check delivery status', 2 #, disabled: '(out of stock)'
+      menu.choice 'Update delivery address', 3
+      menu.choice 'Check past deliveries', 4
+      menu.choice 'Cancel delivery', 5
+      menu.choice 'Log out', 6
+    end
+
+    case user_input
+    when 1
+      new_delivery
+    when 2
+      delivery_status
+    when 3
+      update_delivery
+    when 4
+      past_deliveries
+    when 5
+      cancel_delivery
+    else
+      app_launch_page
+    end
+
+end
+
+def new_delivery
+  puts "worked"
+  binding.pry
+end
+
+def delivery_status
+end
+
+def update_delivery
+end
+
+def past_deliveries
+end
+
+def cancel_delivery
 end
