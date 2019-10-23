@@ -297,8 +297,8 @@ end
 
 def new_delivery
 
-  title
-  puts "Type 'back' at any point to return or restart."
+    title
+    puts "Type 'back' at any point to return or restart."
     puts ""
     
     name = @prompt.ask('Who are you sending your package to?')
@@ -312,20 +312,20 @@ def new_delivery
     @user.destinations << des
     del = Delivery.all.last
     del.description = description
-    del.status = "In transit"
+    del.status = "in transit"
     del.save
     puts ""
     puts "Your delivery is pending, please wait."
     sleep(3)
     splash_loading_bar("A courier is breaking into your house", 40)
     puts ""
-    puts "The courier has the goodies"
+    puts "The courier has the goodies!"
     sleep(3)
     splash_loading_bar("Pre-damaging your shipment", 40)
     puts ""
     puts "Your delivery is on its way!"
     sleep(5)
-
+    binding.pry
     homepage
   
 end
@@ -336,21 +336,23 @@ def delivery_status
 
     formatted_deliveries = @user.deliveries.map do |element|
     
-        element.id
+        "Delivery to: #{element.destination.name} at #{element.destination.destination_address} containing #{element.description} - id: #{element.id}"
 
     end
 
-    @prompt.select("Which delivery?") do |menu|
+    chosen_delivery = @prompt.select("Which delivery?") do |menu|
     
         menu.per_page 4
         menu.help '(Use ↑/↓ to choose, and ←/→ arrow keys to change pages, press Enter to select)'
         menu.enum '.'
         menu.choices formatted_deliveries
     
-
     end
-    # binding.pry
-
+    delivery_id = chosen_delivery.split("id: ")[1].to_i
+    puts ""
+    puts "Your delivery is #{Delivery.find_by(id: delivery_id).status}."
+    sleep(5)
+    homepage
 
 end
 
