@@ -117,7 +117,6 @@ def log_in_page
         elsif password != user_real.password
 
             title
-            puts ""
             puts "Type 'home' at any point to return."
             puts ""
             puts "USERNAME: #{username}"
@@ -165,7 +164,9 @@ def sign_up_page
 
     username = @prompt.ask('Please choose a username:')
 
-    user_real = User.all.find {|user| user.username == username}.username
+    user_real = User.all.find {|user| user.username == username}
+
+    user_real == nil ? user_real : user_real = user_real.username
 
     loop do
 
@@ -243,6 +244,9 @@ def sign_up_page
         origin_address: origin_address}
 
     @user = User.create(h1)
+    puts ""
+    puts "Signed up successfully!"
+    splash_loading_bar("Creating life", 50)
     homepage
     
 end
@@ -251,7 +255,6 @@ def homepage
 
     title
     user_input = @prompt.select('Choose your option:') do |menu|
-
         menu.enum '.'
         menu.choice 'Create new delivery', 1
         menu.choice 'Check delivery status', 2 #, disabled: '(out of stock)'
