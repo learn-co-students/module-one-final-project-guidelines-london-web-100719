@@ -101,7 +101,6 @@ def log_in_page
     end
 
     title
-    puts ""
     puts "Type 'home' at any point to return."
     puts ""
     puts "USERNAME: #{username}"
@@ -257,7 +256,7 @@ def homepage
     user_input = @prompt.select('Choose your option:') do |menu|
         menu.enum '.'
         menu.choice 'Create new delivery', 1
-        menu.choice 'Check delivery status', 2 #, disabled: '(out of stock)'
+        menu.choice 'Check delivery details', 2 #, disabled: '(out of stock)'
         menu.choice 'Update delivery address', 3
         menu.choice 'Check past deliveries', 4
         menu.choice 'Cancel delivery', 5
@@ -387,23 +386,54 @@ def delivery_status
 
     formatted_deliveries = @user.deliveries.map do |element|
     
-        "Delivery to: #{element.destination.name} at #{element.destination.destination_address}, containing #{element.description} - id: #{element.id}"
+        "Delivery to: #{element.destination.name} at #{element.destination.destination_address} - id: #{element.id}"
 
     end
 
-    chosen_delivery = @prompt.select("Which delivery?") do |menu|
+    chosen_delivery = @prompt.select("Select a delivery (use arrow keys and Enter)") do |menu|
     
-        menu.per_page 4
-        menu.help '(Use ↑/↓ to choose, and ←/→ arrow keys to change pages, press Enter to select)'
+        menu.per_page 7
+        menu.help ''
         menu.enum '.'
         menu.choices formatted_deliveries
     
     end
     
-    delivery_id = chosen_delivery.split("id: ")[1].to_i
+    delivery_id = chosen_delivery.split("id: ").last.to_i
+    delivery = Delivery.find_by(id: delivery_id)
     puts ""
-    puts "Your delivery is #{Delivery.find_by(id: delivery_id).status}."
-    sleep(5)
+    puts "Your delivery is #{delivery.status}."
+    puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
+    puts "Cost: $#{delivery.cost}"
+    puts "Initialized on: #{delivery.created_at}"
+    puts "Contents: #{delivery.description}"
+    puts ""
+    # puts "Recepient: #{delivery.destination.name}"
+    # puts "Recepient address: #{delivery.destination.destination_address}"
+    sleep(3)
+    user_input = @prompt.select('Would you like to:') do |menu|
+        menu.enum '.'
+        menu.choice 'go to your homepage', 1
+        menu.choice 'go back to the list of deliveries', 2
+        menu.choice 'log off', 3
+
+    end
+
+    case user_input
+
+    when 1
+
+        homepage
+
+    when 2
+
+        delivery_status
+
+    else
+
+        app_launch_page
+
+    end
     homepage
 
 end
