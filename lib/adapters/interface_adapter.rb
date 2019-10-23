@@ -308,14 +308,56 @@ def new_delivery
     description = @prompt.ask('Type a short description of the contents of your delivery:')
     homepage if description == "back"
 
-    user_input = @prompt.select('Choose your speed option:') do |menu|
-    menu.enum '.'
-    menu.choice 'Standard', 1
-    menu.choice 'Express', 2 #, disabled: '(out of stock)'
-    menu.choice 'Lightning', 3
+    def speed_prompt
+        @prompt.select('Choose your speed option:') do |menu|
+            menu.enum '.'
+            menu.choice 'Standard', 1
+            menu.choice 'Express', 2 #, disabled: '(out of stock)'
+            menu.choice 'Lightning', 3
+        end
     end
 
-    choose_speed
+    user_input = speed_prompt
+
+    des = Destination.find_or_create_by({name: name, destination_address: destination})
+    @user.destinations << des
+
+    del = Delivery.all.last
+
+    def fill_del_details(user_input, del, description)
+
+        del.description = description
+        del.status = "in transit"
+        del.speed = speed_option(user_input)[:type]
+        del.distance = get_distance_between(@user.origin_address, del.destination.destination_address)
+        del.cost = (del.distance * speed_option(user_input)[:cost_mult]).round(2)
+        
+    end
+
+    def choice(del)
+
+        @prompt.yes?("At a delivery distance of #{del.distance}km, the price at this speed option is £#{del.cost} is that acceptable?")
+
+    end
+    
+    fill_del_details(user_input, del, description)
+  
+    loop do
+
+        if choice(del)
+            fill_del_details(user_input, del, description)
+            break
+
+        else
+
+            new_user_input = speed_prompt
+            fill_del_details(new_user_input, del, description)
+            
+        end
+        
+    end
+    
+    del.save
   
     puts ""
     puts "Your delivery is pending, please wait."
@@ -327,28 +369,15 @@ def new_delivery
     splash_loading_bar("Pre-damaging your shipment", 40)
     puts ""
     puts "Your delivery is on its way!"
-    sleep(5)
-    binding.pry
+    sleep(4)
     homepage
+    
   
 end
 
 def choose_speed 
 
-  des = Destination.find_or_create_by({name: name, destination_address: destination})
-  @user.destinations << des
-  del = Delivery.all.last
-  del.description = description
-  del.status = "in transit"
-  del.speed = speed_option(user_input)[:type]
 
-  del.distance = get_distance_between(@user.origin_address, del.destination.destination_address)
-
-  del.cost = del.distance * speed_option(user_input)[:cost_mult]
-  del.save
-
-  choice = @prompt.yes?("At a delivery distance of #{del.distance}km, the price at this speed option is £#{del.cost} is that acceptable?")
-  binding.pry
 
 end
 
