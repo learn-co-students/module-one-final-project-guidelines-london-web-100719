@@ -250,7 +250,7 @@ def sign_up_page
 
     end
 
-    origin_address = @prompt.ask('What is your what3words address?').tr('/', '')
+    origin_address = @prompt.ask('What is your what3words address?').tr('^0-9A-Za-z\.', '')
 
     if origin_address == "home"
 
@@ -266,7 +266,7 @@ def sign_up_page
 
       elsif get_coordinates(origin_address) == "error"
 
-        origin_address = @prompt.ask('Not a valid What3words address, enter again: ').tr('/', '')        
+        origin_address = @prompt.ask('Not a valid What3words address, enter again: ').tr('^0-9A-Za-z\.', '')     
 
       else
 
@@ -298,7 +298,7 @@ def homepage
     user_input = @prompt.select('Choose your option:') do |menu|
         menu.enum '.'
         menu.choice 'Create new delivery', 1
-        menu.choice 'Check delivery details', 2 #, disabled: '(out of stock)'
+        menu.choice 'Check current deliveries', 2 #, disabled: '(out of stock)'
         menu.choice 'Update delivery address', 3
         menu.choice 'Check past deliveries', 4
         menu.choice 'Cancel delivery', 5
@@ -347,7 +347,38 @@ def new_delivery
     homepage if name == "home"
 
     destination = @prompt.ask('What is the What3words address that you are sending it to?')
-    homepage if destination == "home"
+    # homepage if destination == "home"
+
+    loop do
+
+      if destination == "home"
+
+        return app_launch_page
+
+      elsif get_coordinates(destination) == "error"
+
+        destination = @prompt.ask('Not a valid What3words address, enter again: ').tr('^0-9A-Za-z\.', '')
+
+        loop do
+
+          if destination == nil
+            
+            destination = "toobad"
+
+          else
+
+            break
+
+          end
+        end
+
+      else
+
+          break
+              
+      end
+
+  end
 
     description = @prompt.ask('Type a short description of the contents of your delivery:')
     homepage if description == "home"
