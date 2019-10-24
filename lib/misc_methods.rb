@@ -7,7 +7,7 @@ def speed_option(input)
   when 2
     return {type: "express", cost_mult: 3.69}
   when 3
-    return {type: "lightning", cost_mult: 10.01}
+    return {type: "lightning", cost_mult: 12.01}
   else
     return homepage
   end

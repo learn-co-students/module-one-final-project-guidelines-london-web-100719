@@ -371,12 +371,13 @@ def new_delivery
 
     name = @prompt.ask('Who are you sending your package to?')
     homepage if name == "home"
-
+    puts ""
     destination = hydrate_address('What is the What3words address that you are sending it to?')
-
+    puts ""
     description = @prompt.ask('Type a short description of the contents of your delivery:')
     homepage if description == "home"
 
+    puts ""
     def speed_prompt
 
         @prompt.select('Choose your speed option:') do |menu|
@@ -398,6 +399,7 @@ def new_delivery
     destination_instance = Destination.find_or_create_by({name: name, destination_address: destination})
     
     @user.destinations << destination_instance
+
     created_delivery = Delivery.all.last
 
     created_delivery.status = "in transit"
@@ -406,7 +408,7 @@ def new_delivery
     created_delivery.cost = (created_delivery.distance * speed_option(user_input)[:cost_mult]).round(2)
     created_delivery.speed = speed_option(user_input)[:type]
     loop do
-
+      puts ""
       puts "At a delivery distance of #{created_delivery.distance}km, the price at this speed option is £#{created_delivery.cost} is that acceptable? (y/n)"
 
       response = nil
@@ -457,17 +459,25 @@ def new_delivery
         
     end
 
+    if created_delivery.speed == "lightning"
+
+        puts ""
+        puts "Gee, you're rich AF if you can afford that."
+        sleep(2)
+
+    end
+
     puts ""
     puts "Your delivery is pending, please wait."
     sleep(3)
     splash_loading_bar("A courier is breaking into your house", 40)
     puts ""
     puts "The courier has the goodies!"
-    sleep(3)
+    sleep(2)
     splash_loading_bar("Pre-damaging your shipment", 40)
     puts ""
     puts "Your delivery is on its way!"
-    sleep(4)
+    sleep(2)
     puts ""
     puts "Returning to homepage..."
     sleep(2)
@@ -485,7 +495,7 @@ def retrieve_deliveries_by_args(args, menu_option)
         "Delivery to: #{element.destination.name} at #{element.destination.destination_address} - id: #{element.id}"
 
     end
-    
+
     if formatted_deliveries.empty?
 
         puts "No deliveries to show!"
@@ -529,13 +539,20 @@ def retrieve_deliveries_by_args(args, menu_option)
 
     end
 
-    delivery_options_menu(args, menu_option)
+    delivery_options_menu(args, menu_option, delivery)
 
 end
 
-def delivery_options_menu(args, menu_option_choice)
+def delivery_options_menu(args, menu_option_choice, delivery_instance)
 
     menu_options = choose_menu_options(menu_option_choice)
+
+    if menu_option_choice == 5
+
+        cancel_delivery(delivery_instance)
+        # cancel the delivery i just selected but be prompted first if i'm for realsies or not
+
+    end
 
     user_input = @prompt.select('Would you like to:', menu_options)
     
@@ -547,7 +564,6 @@ def delivery_options_menu(args, menu_option_choice)
 
     when menu_options[1]
 
-
         retrieve_deliveries_by_args(args, menu_option_choice)
 
     else
@@ -555,5 +571,31 @@ def delivery_options_menu(args, menu_option_choice)
         app_launch_page
 
     end
+
+
     
+end
+
+def cancel_delivery(del_instance)
+
+    are_you_sure = @prompt.select('Are you sure you want to cancel this delivery?') do |menu|
+    
+        menu.help ''
+        menu.enum '.'
+        menu.choice "Yes", 1
+        menu.choice "No", 0
+    
+    end
+
+    if are_you_sure == 0
+
+        return
+
+    end
+    puts ""
+    puts "Delivery has been cancelled."
+    sleep(2)
+    puts ""
+    del_instance.destroy
+
 end
