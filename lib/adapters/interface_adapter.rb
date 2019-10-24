@@ -550,7 +550,6 @@ def delivery_options_menu(args, menu_option_choice, delivery_instance)
     if menu_option_choice == 5
 
         cancel_delivery(delivery_instance)
-        # cancel the delivery i just selected but be prompted first if i'm for realsies or not
 
     end
 
