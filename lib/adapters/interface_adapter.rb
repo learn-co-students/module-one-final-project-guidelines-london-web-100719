@@ -469,6 +469,8 @@ def new_delivery
     puts ""
     puts "Your delivery is on its way!"
     sleep(4)
+    puts "Returning to homepage..."
+    sleep(2)
     homepage
 
 end
