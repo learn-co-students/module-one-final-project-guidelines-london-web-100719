@@ -217,7 +217,6 @@ def sign_up_page
 
     end
     
-    # have_address = @prompt.yes?('Do you have your what3words address?')
     puts "Do you have your what3words address? (y/n)"
 
     have_address = nil
@@ -413,8 +412,33 @@ def new_delivery
 
     loop do
 
+      puts "At a delivery distance of #{created_delivery.distance}km, the price at this speed option is £#{created_delivery.cost} is that acceptable? (y/n)"
 
-        response = @prompt.yes?("At a delivery distance of #{created_delivery.distance}km, the price at this speed option is £#{created_delivery.cost} is that acceptable?")
+      response = nil
+
+      loop do 
+
+        response = gets.chomp
+
+          if response != "y" && response != "n"
+
+              puts "Invalid input! Type y for yes, or n for no."
+      
+          else
+
+              break
+      
+          end
+        
+    end
+
+    if response == "n"
+
+      response = false
+
+    end
+
+        ##############################################################################################
 
         if response
 
