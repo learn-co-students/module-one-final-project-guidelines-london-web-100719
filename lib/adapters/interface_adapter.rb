@@ -404,7 +404,7 @@ def new_delivery
     created_delivery.description = description
     created_delivery.distance = get_distance_between(@user.origin_address, created_delivery.destination.destination_address)
     created_delivery.cost = (created_delivery.distance * speed_option(user_input)[:cost_mult]).round(2)
-
+    created_delivery.speed = speed_option(user_input)[:type]
     loop do
 
       puts "At a delivery distance of #{created_delivery.distance}km, the price at this speed option is £#{created_delivery.cost} is that acceptable? (y/n)"
@@ -450,6 +450,7 @@ def new_delivery
             end
 
             created_delivery.cost = (created_delivery.distance * speed_option(new_input)[:cost_mult]).round(2)
+            # binding.pry
             created_delivery.speed = speed_option(new_input)[:type]
             
         end
@@ -467,6 +468,7 @@ def new_delivery
     puts ""
     puts "Your delivery is on its way!"
     sleep(4)
+    puts ""
     puts "Returning to homepage..."
     sleep(2)
     homepage
@@ -500,12 +502,13 @@ def retrieve_deliveries_by_args(args, menu_option)
         
         puts ""
         puts "Your delivery is #{delivery.status}."
-        puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
+        # puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
         puts "Cost: £#{delivery.cost}"
         puts "Shipment method: #{delivery.speed}"
         puts "Initialized on: #{delivery.created_at}"
         puts "Contents: #{delivery.description}"
         puts ""
+        # binding.pry
         # puts "Recepient: #{delivery.destination.name}"
         # puts "Recepient address: #{delivery.destination.destination_address}"
         sleep(1.5)
@@ -524,7 +527,7 @@ def delivery_options_menu(args, menu_option_choice)
 
     menu_options = choose_menu_options(menu_option_choice)
 
-    user_input = @prompt.select('Would you like to:', menu_options)[
+    user_input = @prompt.select('Would you like to:', menu_options)
         
     case user_input
 
