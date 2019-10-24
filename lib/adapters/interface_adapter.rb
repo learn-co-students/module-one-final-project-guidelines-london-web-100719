@@ -1,8 +1,3 @@
-require 'pry'
-require "tty-prompt"
-require "tty-reader"
-
-
 @prompt = TTY::Prompt.new
 @reader = TTY::Reader.new
 
