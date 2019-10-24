@@ -531,7 +531,7 @@ def retrieve_deliveries_by_args(args, menu_option)
         # binding.pry
         # puts "Recepient: #{delivery.destination.name}"
         # puts "Recepient address: #{delivery.destination.destination_address}"
-        sleep(1.5)
+        sleep(1)
 
     else
 
@@ -547,7 +547,11 @@ def delivery_options_menu(args, menu_option_choice, delivery_instance)
 
     menu_options = choose_menu_options(menu_option_choice)
 
-    if menu_option_choice == 5
+    if  menu_option_choice == 3
+
+        update_delivery(delivery_instance)
+
+    elsif menu_option_choice == 5
 
         cancel_delivery(delivery_instance)
 
@@ -582,11 +586,11 @@ def cancel_delivery(del_instance)
         menu.help ''
         menu.enum '.'
         menu.choice "Yes", 1
-        menu.choice "No", 0
+        menu.choice "No", 2
     
     end
 
-    if are_you_sure == 0
+    if are_you_sure == 2
 
         return
 
@@ -596,5 +600,77 @@ def cancel_delivery(del_instance)
     sleep(2)
     puts ""
     del_instance.destroy
+
+end
+
+def update_delivery(del_instance)
+
+  which_change = @prompt.select('What do you want to change?') do |menu|
+    
+    menu.help ''
+    menu.enum '.'
+    menu.choice "Recipient name", 1
+    menu.choice "Recipient address", 2
+    menu.choice "Return to homepage", 3
+
+  end
+
+  if which_change == 1
+
+    new_name = @prompt.ask("What do you change the name to?")
+
+    are_you_sure = @prompt.select('Are you sure you want to update this delivery?') do |menu|
+      
+      menu.help ''
+      menu.enum '.'
+      menu.choice "Yes", 1
+      menu.choice "No", 2
+    
+      end
+
+    if are_you_sure == 2
+
+        return
+
+    end
+
+    puts ""
+    puts "Delivery has been updated."
+    sleep(2)
+    puts ""
+    del_instance.destination.name = new_name
+
+  elsif which_change == 2
+
+    new_destination = hydrate_address("What do you want to change the destination to?")
+
+    are_you_sure = @prompt.select('Are you sure you want to update this delivery?') do |menu|
+      
+      menu.help ''
+      menu.enum '.'
+      menu.choice "Yes", 1
+      menu.choice "No", 2
+    
+      end
+
+    if are_you_sure == 2
+
+        return
+
+    end
+
+    puts ""
+    puts "Delivery has been updated."
+    sleep(2)
+    puts ""
+    del_instance.destination.destination_address = new_destination
+
+  else
+
+    homepage
+
+  end
+  binding.pry
+  del_instance.destination.save
 
 end
