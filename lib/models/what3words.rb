@@ -28,34 +28,37 @@ def get_coordinates(three_words)
 
 end
 
-def get_distance loc1, loc2 #using Haversine formula.
+# def get_distance loc1, loc2 #using Haversine formula.
 
-  rad_per_deg = Math::PI/180  # PI / 180
-  rkm = 6371                  # Earth radius in kilometers
-  rm = rkm * 1000             # Radius in meters
+#   rad_per_deg = Math::PI/180  # PI / 180
+#   rkm = 6371                  # Earth radius in kilometers
+#   rm = rkm * 1000             # Radius in meters
 
-  dlat_rad = (loc2[0]-loc1[0]) * rad_per_deg  # Delta, converted to rad
-  dlon_rad = (loc2[1]-loc1[1]) * rad_per_deg
+#   dlat_rad = (loc2[0]-loc1[0]) * rad_per_deg  # Delta, converted to rad
+#   dlon_rad = (loc2[1]-loc1[1]) * rad_per_deg
 
-  lat1_rad, lon1_rad = loc1.map {|i| i * rad_per_deg }
-  lat2_rad, lon2_rad = loc2.map {|i| i * rad_per_deg }
+#   lat1_rad, lon1_rad = loc1.map {|i| i * rad_per_deg }
+#   lat2_rad, lon2_rad = loc2.map {|i| i * rad_per_deg }
 
-  a = Math.sin(dlat_rad/2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
-  c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
+#   a = Math.sin(dlat_rad/2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
+#   c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
 
-  (rm * c)/1000 # Delta in kilometers
+#   (rm * c)/1000 # Delta in kilometers
 
-end
+# end
+
+
 
 def get_distance_between(origin_address, dest_address)
 
-a_one = get_coordinates(origin_address)
-a_two = get_coordinates(dest_address)
-if a_one == "error" || a_two == "error"
-  puts "That is not a valid what3words address"
-else
-dist = get_distance(a_one, a_two)
-dist.round(2)
+    a_one = get_coordinates(origin_address)
+    a_two = get_coordinates(dest_address)
+    if a_one == "error" || a_two == "error"
+    puts "That is not a valid what3words address"
+    else
+    # dist = get_distance(a_one, a_two)
+    dist = Geocoder::Calculations.distance_between(a_one, a_two) * 1.609
+    dist.round(2)
 end
 
 end
