@@ -250,7 +250,7 @@ def sign_up_page
 
     origin_address = hydrate_address('What is your what3words address?')
 
-    binding.pry
+    # binding.pry
     h1 = {
         first_name: first_name,
         last_name: last_name,
@@ -340,11 +340,11 @@ def homepage
 
     when 2
 
-        retrieve_deliveries_by_args({user_id: @user.id}, user_input)
+        retrieve_deliveries_by_args({user_id: @user.id, status: "in transit"}, user_input)
 
     when 3
 
-        retrieve_deliveries_by_args({user_id: @user.id}, user_input)
+        retrieve_deliveries_by_args({user_id: @user.id, status: "in transit"}, user_input)
 
     when 4
 
@@ -485,7 +485,17 @@ def retrieve_deliveries_by_args(args, menu_option)
         "Delivery to: #{element.destination.name} at #{element.destination.destination_address} - id: #{element.id}"
 
     end
+    
+    if formatted_deliveries.empty?
 
+        puts "No deliveries to show!"
+        puts ""
+        sleep(1.5)
+        puts "Returning to homepage."
+        sleep(1.5)
+        homepage
+        
+    end
     chosen_delivery = @prompt.select("Select a delivery (use arrow keys and Enter)") do |menu|
     
         menu.per_page 7
@@ -528,14 +538,14 @@ def delivery_options_menu(args, menu_option_choice)
     menu_options = choose_menu_options(menu_option_choice)
 
     user_input = @prompt.select('Would you like to:', menu_options)
-        
+    
     case user_input
 
-    when 1
+    when menu_options[0]
 
         homepage
 
-    when 2
+    when menu_options[1]
 
 
         retrieve_deliveries_by_args(args, menu_option_choice)
