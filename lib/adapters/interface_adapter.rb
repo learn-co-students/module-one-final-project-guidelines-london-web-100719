@@ -250,33 +250,9 @@ def sign_up_page
 
     end
 
-    origin_address = @prompt.ask('What is your what3words address?').tr('^0-9A-Za-z\.', '')
+    origin_address = hydrate_address('What is your what3words address?')
 
-    if origin_address == "home"
-
-        return app_launch_page
-        
-    end
-
-    loop do
-
-      if origin_address == "home"
-
-        return app_launch_page
-
-      elsif get_coordinates(origin_address) == "error"
-
-        origin_address = @prompt.ask('Not a valid What3words address, enter again: ').tr('^0-9A-Za-z\.', '')     
-
-      else
-
-          break
-              
-      end
-
-  end
-
-
+    binding.pry
     h1 = {
         first_name: first_name,
         last_name: last_name,
@@ -289,6 +265,58 @@ def sign_up_page
     puts "Signed up successfully!"
     splash_loading_bar("Creating life", 50)
     homepage
+    
+end
+
+def hydrate_address(question)
+
+    origin_address = @prompt.ask(question)
+
+    loop do
+
+        loop do
+
+            if origin_address == nil || origin_address == ""
+    
+                origin_address = @prompt.ask('Not a valid What3words address, enter again: ')
+                
+            elsif origin_address == "home"
+    
+                return app_launch_page
+    
+            else
+    
+                origin_address = origin_address.split(".").map {|e| e.gsub(/\W+/, '')}.join('.')
+                # binding.pry
+                break
+    
+            end
+            
+        end
+
+        # binding.pry
+
+        if origin_address == nil || origin_address == ""
+
+            origin_address = "blank"
+
+        elsif origin_address == "home"
+
+            return app_launch_page
+
+        elsif get_coordinates(origin_address) == "error"
+
+            origin_address = @prompt.ask('Not a valid What3words address, enter again: ')
+
+        else
+            
+            break
+
+        end
+
+    end
+
+    origin_address
     
 end
 
@@ -346,39 +374,7 @@ def new_delivery
     name = @prompt.ask('Who are you sending your package to?')
     homepage if name == "home"
 
-    destination = @prompt.ask('What is the What3words address that you are sending it to?')
-    # homepage if destination == "home"
-
-    loop do
-
-      if destination == "home"
-
-        return app_launch_page
-
-      elsif get_coordinates(destination) == "error"
-
-        destination = @prompt.ask('Not a valid What3words address, enter again: ').tr('^0-9A-Za-z\.', '')
-
-        loop do
-
-          if destination == nil
-            
-            destination = "toobad"
-
-          else
-
-            break
-
-          end
-        end
-
-      else
-
-          break
-              
-      end
-
-  end
+    destination = hydrate_address('What is the What3words address that you are sending it to?')
 
     description = @prompt.ask('Type a short description of the contents of your delivery:')
     homepage if description == "home"
