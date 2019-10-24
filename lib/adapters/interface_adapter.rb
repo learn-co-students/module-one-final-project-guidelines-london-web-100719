@@ -433,8 +433,6 @@ def new_delivery
 
     end
 
-        ##############################################################################################
-
         if response
 
             created_delivery.save
@@ -526,16 +524,8 @@ def delivery_options_menu(args, menu_option_choice)
 
     menu_options = choose_menu_options(menu_option_choice)
 
-    user_input = @prompt.select('Would you like to:', menu_options)[0].to_i
-
-    # user_input = @prompt.select('Would you like to:') do |menu|
-
-    #     menu.enum '.'
-    #     menu.choice 'go to your homepage', 1
-    #     menu.choice 'go back to the list of deliveries', 2
-    #     menu.choice 'log off', 3
-
-    # end
+    user_input = @prompt.select('Would you like to:', menu_options)[
+        
     case user_input
 
     when 1
