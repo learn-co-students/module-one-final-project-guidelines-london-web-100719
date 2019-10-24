@@ -1,8 +1,3 @@
-require 'uri'
-require 'net/http'
-require 'json'
-require 'pry'
-
 def get_coordinates(three_words)
 
   url = URI("https://api.what3words.com/v3/convert-to-coordinates?key=6RXCEY3L&words=#{three_words}&format=json")
@@ -35,15 +30,8 @@ def get_distance_between(origin_address, dest_address)
     if a_one == "error" || a_two == "error"
     puts "That is not a valid what3words address"
     else
-    # dist = get_distance(a_one, a_two)
     dist = Geocoder::Calculations.distance_between(a_one, a_two) * 1.609
     dist.round(2)
-end
+    end
 
 end
-
-
-
-# puts get_distance_between("fence.gross.bats", "salad.likening.sprinting")
-# get_coordinates("shit")
-# system 'open https://what3words.com'

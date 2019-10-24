@@ -243,7 +243,7 @@ def sign_up_page
         puts ""
         puts "You'll be redirecred to the what3words website to find your address."
         puts "When you have it, please come back and enter it here."
-        sleep(8)
+        sleep(5)
         puts `open https://what3words.com/`
         sleep(2)
 
@@ -459,7 +459,7 @@ def retrieve_deliveries_by_args(args, menu_option)
         puts ""
         # puts "Recepient: #{delivery.destination.name}"
         # puts "Recepient address: #{delivery.destination.destination_address}"
-        sleep(3)
+        sleep(1.5)
 
     else
 
