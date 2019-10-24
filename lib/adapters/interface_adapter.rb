@@ -222,9 +222,29 @@ def sign_up_page
 
     end
     
-    have_address = @prompt.yes?('Do you have your what3words address?')
+    # have_address = @prompt.yes?('Do you have your what3words address?')
+    puts "Do you have your what3words address? (y/n)"
 
-    if !have_address
+    have_address = nil
+
+    loop do 
+
+        have_address = gets.chomp
+
+        if have_address != "y" && have_address != "n"
+
+            puts "Invalid input! Type y for yes, or n for no."
+    
+        else
+
+            break
+    
+        end
+        
+    end
+
+
+    if have_address == "n"
 
         puts ""
         puts "You'll be redirecred to the what3words website to find your address."
@@ -299,19 +319,20 @@ def homepage
 
     when 2
 
-        delivery_status
+        retrieve_deliveries_by_args({user_id: @user.id}, user_input)
 
     when 3
 
-        update_delivery
+        retrieve_deliveries_by_args({user_id: @user.id}, user_input)
 
     when 4
 
-        past_deliveries
+        retrieve_deliveries_by_args({user_id: @user.id, status: "delivered"}, user_input)
+        # had a function called past_deliveries basically the same as delivery_status so I ended up changing delivery_status to retrieve_deliveries_by_args and calling it with either just the user id or the user id and delivered status
 
     when 5
 
-        cancel_delivery
+        retrieve_deliveries_by_args({user_id: @user.id, status: "in transit"}, user_input)
 
     else
 
@@ -321,87 +342,20 @@ def homepage
 
 end
 
-# def new_delivery
-
-
-#     des = Destination.find_or_create_by({name: name, destination_address: destination})
-#     @user.destinations << des
-
-#     del = Delivery.all.last
-
-#     def fill_del_details(user_input, del, description)
-
-#         del.description = description
-#         del.status = "in transit"
-#         del.speed = speed_option(user_input)[:type]
-#         del.distance = get_distance_between(@user.origin_address, del.destination.destination_address)
-#         del.cost = (del.distance * speed_option(user_input)[:cost_mult]).round(2)
-        
-#     end
-
-#     fill_del_details(user_input, del, description)
-
-#     def choice(del)
-
-#         @prompt.yes?("At a delivery distance of #{del.distance}km, the price at this speed option is £#{del.cost} is that acceptable?")
-
-#     end
-    
-#     fill_del_details(user_input, del, description)
-  
-#     loop do
-
-#         if choice(del)
-#             fill_del_details(user_input, del, description)
-#             break
-
-#         else
-
-#             new_user_input = speed_prompt
-#             fill_del_details(new_user_input, del, description)
-
-#             if new_user_input == 4
-                
-#                 Delivery.all.last.destroy
-#                 binding.pry
-#                 break homepage
-                
-#             end
-            
-#         end
-        
-#     end
-    
-#     # del.save
-  
-#     puts ""
-#     puts "Your delivery is pending, please wait."
-#     sleep(3)
-#     splash_loading_bar("A courier is breaking into your house", 40)
-#     puts ""
-#     puts "The courier has the goodies!"
-#     sleep(3)
-#     splash_loading_bar("Pre-damaging your shipment", 40)
-#     puts ""
-#     puts "Your delivery is on its way!"
-#     sleep(4)
-#     homepage
-    
-  
-# end
-
 def new_delivery
 
     title
-    puts "Type 'back' at any point to return or restart."
+    puts "Type 'home' at any point to return."
     puts ""
 
     name = @prompt.ask('Who are you sending your package to?')
-    homepage if name == "back"
+    homepage if name == "home"
+
     destination = @prompt.ask('What is the What3words address that you are sending it to?')
-    homepage if destination == "back"
+    homepage if destination == "home"
+
     description = @prompt.ask('Type a short description of the contents of your delivery:')
-    homepage if description == "back"
+    homepage if description == "home"
 
     def speed_prompt
 
@@ -442,6 +396,7 @@ def new_delivery
             break
             
         else
+
             new_input = speed_prompt
 
             if new_input == 4
@@ -475,10 +430,10 @@ def new_delivery
 
 end
 
-def delivery_status
+def retrieve_deliveries_by_args(args, menu_option)
 
     title
-    deliveries_array = Delivery.all.where(user_id: @user.id)
+    deliveries_array = Delivery.all.where(args)
 
     formatted_deliveries = deliveries_array.map do |element|
     
@@ -497,25 +452,45 @@ def delivery_status
     
     delivery_id = chosen_delivery.split("id: ")[-1].to_i
     delivery = Delivery.find_by(id: delivery_id)
-    puts ""
-    puts "Your delivery is #{delivery.status}."
-    puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
-    puts "Cost: $#{delivery.cost}"
-    puts "Shipment method: $#{delivery.speed}"
-    puts "Initialized on: #{delivery.created_at}"
-    puts "Contents: #{delivery.description}"
-    puts ""
-    # puts "Recepient: #{delivery.destination.name}"
-    # puts "Recepient address: #{delivery.destination.destination_address}"
-    sleep(3)
-    user_input = @prompt.select('Would you like to:') do |menu|
-        menu.enum '.'
-        menu.choice 'go to your homepage', 1
-        menu.choice 'go back to the list of deliveries', 2
-        menu.choice 'log off', 3
+
+    if menu_option != 5
+        
+        puts ""
+        puts "Your delivery is #{delivery.status}."
+        puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
+        puts "Cost: $#{delivery.cost}"
+        puts "Shipment method: #{delivery.speed}"
+        puts "Initialized on: #{delivery.created_at}"
+        puts "Contents: #{delivery.description}"
+        puts ""
+        # puts "Recepient: #{delivery.destination.name}"
+        # puts "Recepient address: #{delivery.destination.destination_address}"
+        sleep(3)
+
+    else
+
+        puts ""
 
     end
 
+    delivery_options_menu(args, menu_option)
+
+end
+
+def delivery_options_menu(args, menu_option_choice)
+
+    menu_options = choose_menu_options(menu_option_choice)
+
+    user_input = @prompt.select('Would you like to:', menu_options)[0].to_i
+
+    # user_input = @prompt.select('Would you like to:') do |menu|
+
+    #     menu.enum '.'
+    #     menu.choice 'go to your homepage', 1
+    #     menu.choice 'go back to the list of deliveries', 2
+    #     menu.choice 'log off', 3
+
+    # end
     case user_input
 
     when 1
@@ -524,31 +499,13 @@ def delivery_status
 
     when 2
 
-        delivery_status
+
+        retrieve_deliveries_by_args(args, menu_option_choice)
 
     else
 
         app_launch_page
 
     end
-    homepage
-
-end
-
-def update_delivery
-
-
-
-end
-
-def past_deliveries
-
-    @user.deliveries.select {|d| d.status == "delivered"}
-
-end
-
-def cancel_delivery
-
-
     
 end
