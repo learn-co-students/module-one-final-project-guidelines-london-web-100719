@@ -134,7 +134,6 @@ def log_in_page
     end
 
     splash_loading_bar("Logging into the mainframe", 40)
-    # binding.pry
     @user = User.find_by(username: username)
     homepage
         
@@ -243,7 +242,7 @@ def sign_up_page
         puts ""
         puts "You'll be redirecred to the what3words website to find your address."
         puts "When you have it, please come back and enter it here."
-        sleep(8)
+        sleep(5)
         puts `open https://what3words.com/`
         sleep(2)
 
@@ -504,14 +503,14 @@ def retrieve_deliveries_by_args(args, menu_option)
         puts ""
         puts "Your delivery is #{delivery.status}."
         puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
-        puts "Cost: $#{delivery.cost}"
+        puts "Cost: £#{delivery.cost}"
         puts "Shipment method: #{delivery.speed}"
         puts "Initialized on: #{delivery.created_at}"
         puts "Contents: #{delivery.description}"
         puts ""
         # puts "Recepient: #{delivery.destination.name}"
         # puts "Recepient address: #{delivery.destination.destination_address}"
-        sleep(3)
+        sleep(1.5)
 
     else
 
