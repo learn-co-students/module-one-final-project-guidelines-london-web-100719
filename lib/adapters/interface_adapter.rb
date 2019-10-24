@@ -134,7 +134,6 @@ def log_in_page
     end
 
     splash_loading_bar("Logging into the mainframe", 40)
-    # binding.pry
     @user = User.find_by(username: username)
     homepage
         
@@ -453,7 +452,7 @@ def retrieve_deliveries_by_args(args, menu_option)
         puts ""
         puts "Your delivery is #{delivery.status}."
         puts "ETA: #{delivery.status == "delivered" ? 'N/A' : 'whatever function'}" #{convert_to_readable_time(Time.now.utc, delivery.created_on)}"
-        puts "Cost: $#{delivery.cost}"
+        puts "Cost: £#{delivery.cost}"
         puts "Shipment method: #{delivery.speed}"
         puts "Initialized on: #{delivery.created_at}"
         puts "Contents: #{delivery.description}"
