@@ -36,21 +36,42 @@ After filling in the basics you'll be asked to provide you what3words address. I
 
 You get the point.
 
-You'll be asked if you have your address, and if you don't you'll be redirected to the what3words website to find it, after which you can come back and fill it in.
+You'll be asked if you have your address, and if you don't you'll be redirected to the [what3words website](https://what3words.com/logs.broken.youth) to find it, after which you can come back and fill it in.
 That will complete your registration and you'll be able to proceed to your homepage where you can access all the features of this amazing app.
 
 ### Homepage
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have at minimum three models including one join model. This means you must have a many-to-many relationship.
-3. You should seed your database using data that you collect either from a CSV, a website by scraping, or an API.
-4. Your models should have methods that answer interesting questions about the data. For example, if you've collected info about movie reviews, what is the most popular movie? What movie has the most reviews?
-5. You should provide a CLI to display the return values of your interesting methods.  
-6. Use good OO design patterns. You should have separate classes for your models and CLI interface.
+You have a few options here:
 
-  **Resource:** [Easy Access APIs](https://github.com/learn-co-curriculum/easy-access-apis)
+- 1. Create a new delivery
+- 2. Check current delvieries
+- 3. Update delivery details
+- 4. Check past deliveries
+- 5. Cancel a current delivery
+- 6. Log out
 
-### Option Two - Command Line CRUD App
+#### Create a new delivery
+
+placeholder
+
+#### Check current delvieries
+
+placeholder
+
+#### Update delivery details
+
+placeholder
+
+#### Check past deliveries
+
+placeholder
+
+#### Cancel a current delivery
+
+placeholder
+
+
+
 
 1. Access a Sqlite3 Database using ActiveRecord.
 2. You should have a minimum of three models.
