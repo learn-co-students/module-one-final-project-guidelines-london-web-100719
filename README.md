@@ -40,7 +40,7 @@ Alternatively, you can sign up and you'll be asked to provide the following deta
 - Username
 - Password
 
-After filling in the basics you'll be asked to provide you what3words address. If you're not familiar with it, it's a service that maps the whole world in 3m x 3m "chunks", each accessible with a unique 3 words string like:
+After filling in the basics you'll be asked to provide your [what3words website](https://what3words.com/logs.broken.youth). If you're not familiar with it, it's a service that maps the whole world into 3m x 3m "chunks", each accessible by a unique 3 words string like:
 - **stiff.little.finger**
 - **credit.card.denied**
 - **imaginary.future.partner**
@@ -49,7 +49,7 @@ After filling in the basics you'll be asked to provide you what3words address. I
 
 You get the point.
 
-You'll be asked if you have your address, and if you don't you'll be redirected to the [what3words website](https://what3words.com/logs.broken.youth) to find it, after which you can come back and fill it in.
+You'll be asked if you have your address and if you don't you'll be redirected to the [what3words website](https://what3words.com/logs.broken.youth) to find it, after which you can come back and fill it in.
 That will complete your registration and you'll be able to proceed to your homepage where you can access all the features of this amazing app.
 
 ### Homepage
@@ -78,11 +78,11 @@ Alternatively, you can cancel the new delivery by selecting the cancel option fr
 
 #### Check current deliveries
 
-This page will list all your deliveries that are currently in transit. Details such as the price you paid for the delivery, recepient details, and contents are also shown. From each delivery you can then navigate back to the list of deliveries or the homepage.
+This page will list all your deliveries that are currently in transit. Details such as the price you paid for the delivery, recipient details, and contents are also shown. From each delivery you can then navigate back to the list of deliveries or the homepage.
 
 #### Update delivery details
 
-This page will also list your current deliveries but after you select a certain one, you'll be prompted to select what you want to update about it - the recepient address or recepient name. After you input the new details you'll be prompted if you're sure you want to change them, and if you choose yes the delivery and destination details will be persisted to the database, and if you choose no, you'll have the option to go back to the homepage or list the deliveries again.
+This page will also list your current deliveries but after you select a certain one, you'll be prompted to select what you want to update about it - the recipient address or recipient name. After you input the new details you'll be prompted if you're sure you want to change them, and if you choose yes the delivery and destination details will be persisted to the database, and if you choose no, you'll have the option to go back to the homepage or list the deliveries again.
 
 #### Check past deliveries
 
