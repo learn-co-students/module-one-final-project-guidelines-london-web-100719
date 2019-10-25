@@ -35,10 +35,10 @@ Log in with your username and password and you'll be taken to your homepage.
 #### Sign up
 
 Alternatively, you can sign up and you'll be asked to provide the following details:
--First name
--Last name
--Username
--Password
+- First name
+- Last name
+- Username
+- Password
 After filling in the basics you'll be asked to provide you what3words address. If you're not familiar with it, it's a service that maps the whole world in 3m x 3m "chunks", each accessible with a unique 3 words string like:
 - **stiff.little.finger**
 - **credit.card.denied**
