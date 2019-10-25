@@ -28,11 +28,11 @@ Alternatively, you can sign up and you'll be asked to provide the following deta
 -Username
 -Password
 After filling in the basics you'll be asked to provide you what3words address. If you're not familiar with it, it's a service that maps the whole world in 3m x 3m "chunks", each accessible with a unique 3 words string like:
--**stiff.little.finger**
--**credit.card.denied**
--**imaginary.future.partner**
--**glorified.bodily.passage**
--**Inflamed.flesh.massaged**
+- **stiff.little.finger**
+- **credit.card.denied**
+- **imaginary.future.partner**
+- **glorified.bodily.passage**
+- **Inflamed.flesh.massaged**
 
 You get the point.
 
