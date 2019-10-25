@@ -1,9 +1,9 @@
 # Module One Final Project - DELIVERUU - Niki and Alex
----
+
 Congratulations, you've stumbled upon our CLI Courier Service App Thing!
 
 ## Installation Instructions
----
+
 1. Fork this repo
 2. Run
 ```ruby
@@ -11,9 +11,9 @@ ruby bin/run.rb
 ```
 
 ## Project Outline
----
+
 ### Upon starting the app
----
+
 You'll be greeted with a login and signup page so use your arrow keys to select what you want to do.
 
 #### Log in
@@ -40,7 +40,7 @@ You'll be asked if you have your address, and if you don't you'll be redirected 
 That will complete your registration and you'll be able to proceed to your homepage where you can access all the features of this amazing app.
 
 ### Homepage
----
+
 You have a few options here:
 
 - Create a new delivery
@@ -87,11 +87,11 @@ You can cancel a delivery that's in transit by selecting a delivery from the lis
 Pretty self explanatory - if you log out, the app is taken back to main screen, where you'll have the option to log back in, sign up with a new account, or quit the app which will close the terminal window (keep in mind you may be prompted to terminate the terminal process depending on your system preferences)
 
 ### Contributor's Guide
----
+
 If you wish to contribute to the app go for it.
 
 ### License
----
+
 License is available in the [License.md file](https://github.com/Ned-el-ch/module-one-final-project-guidelines-london-web-100719/blob/master/LICENSE.md).
 
 
