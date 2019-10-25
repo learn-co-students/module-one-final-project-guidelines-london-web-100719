@@ -54,12 +54,12 @@ You have a few options here:
 
 Once you have logged in you will have the option to create a new delivery. It will ask for the following details:
 - The name of the recipient
-- The [what3words website](https://what3words.com/logs.broken.youth) of the recipient (please note that only valid addresses will be accepted or you'll be prompted to enter a valid one)
+- The [what3words website](https://what3words.com/logs.broken.youth) of the recipient (__please note that only valid addresses will be accepted or you'll be prompted to enter a valid one__)
 - A description of the contents of your delivery
 You will then choose of of three delivery speed options. Each option has a different price per kilometer.
-    - **Standard** (£1.23 per kilometer)
-    - **Express** (£3.69 per kilometer)
-    - **Lightning** (£12.01 per kilometer)
+    - **Standard** (***£1.23*** __per kilometer__)
+    - **Express** (***£3.69*** __per kilometer__)
+    - **Lightning** (***£12.01*** __per kilometer__)
 
 Alternatively, you can cancel the new delivery by typing home at any point which will take you back to the homepage.
 
@@ -81,7 +81,7 @@ You can cancel a delivery that's in transit by selecting a delivery from the lis
 
 #### Log out
 
-Pretty self explanatory - if you log out, the app is taken back to main screen, where you'll have the option to log back in, sign up with a new account, or quit the app which will close the terminal window (keep in mind you may be prompted to terminate the terminal process depending on your system preferences)
+Pretty self explanatory - if you log out, the app is taken back to main screen, where you'll have the option to log back in, sign up with a new account, or quit the app which will close the terminal window (__keep in mind you may be prompted to terminate the terminal process depending on your system preferences__)
 
 ### Contributor's Guide
 ---
