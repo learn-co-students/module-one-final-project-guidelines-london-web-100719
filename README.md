@@ -9,11 +9,19 @@ Congratulations, you've stumbled upon our CLI Courier Service App Thing!
 ```ruby
 bundle
 ```
-2. Run the file
+3. Run the file
 ```ruby
 ruby bin/run.rb
 ```
-
+If you run into errors, run
+```ruby
+rake db:migrate
+```
+to make sure the database has been created and you can optionally use
+```ruby
+rake db:seed
+```
+to seed the database with some examples.
 ## Project Outline
 
 ### Upon starting the app
