@@ -7,19 +7,19 @@ Congratulations, you've stumbled upon our CLI Courier Service App Thing!
 1. Fork this repo
 2. Run bundle
 ```ruby
-bundle
+$ bundle
 ```
 3. Run the file
 ```ruby
-ruby bin/run.rb
+$ ruby bin/run.rb
 ```
 If you run into errors, run
 ```ruby
-rake db:migrate
+$ rake db:migrate
 ```
 to make sure the database has been created and you can optionally use
 ```ruby
-rake db:seed
+$ rake db:seed
 ```
 to seed the database with some examples.
 ## Project Outline
