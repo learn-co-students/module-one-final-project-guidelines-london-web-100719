@@ -52,9 +52,10 @@ You have a few options here:
 
 #### Create a new delivery
 
-Once you have logged in you will have the option to create a new delivery. I will ask for the following details:
+Once you have logged in you will have the option to create a new delivery. It will ask for the following details:
+
 -The name of the recipient
--The What3words adress of the recipient (please note that only valid addresses will be accepted)
+-The What3words address of the recipient (please note that only valid addresses will be accepted)
 -A description of the contents of your delivery
 
 You will then choose of of three delivery speed options. Each option has a different price per kilometer.
