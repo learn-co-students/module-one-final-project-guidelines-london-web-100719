@@ -57,9 +57,9 @@ Once you have logged in you will have the option to create a new delivery. It wi
 - The [what3words website](https://what3words.com/logs.broken.youth) of the recipient (please note that only valid addresses will be accepted or you'll be prompted to enter a valid one)
 - A description of the contents of your delivery
 You will then choose of of three delivery speed options. Each option has a different price per kilometer.
--- Standard (£1.23 per kilometer)
--- Express (£3.69 per kilometer)
--- Lightning (£12.01 per kilometer)
+    - Standard (£1.23 per kilometer)
+    - Express (£3.69 per kilometer)
+    - Lightning (£12.01 per kilometer)
 Alternatively, you can cancel the new delivery by typing home at any point which will take you back to the homepage.
 
 #### Check current deliveries
