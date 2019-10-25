@@ -73,7 +73,7 @@ You will then choose of of three delivery speed options. Each option has a diffe
     - **Express** (_£3.69 per kilometer_)
     - **Lightning** (_£12.01 per kilometer_)
 
-Alternatively, you can cancel the new delivery by typing home at any point which will take you back to the homepage.
+Alternatively, you can cancel the new delivery by selecting the cancel option from the menu list or typing home at any point in the fields that take in an input which will take you back to the homepage.
 
 #### Check current deliveries
 
