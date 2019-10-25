@@ -1,12 +1,45 @@
-# Module One Final Project Guidelines
+# Module One Final Project - DELIVERUU - Niki and Alex
 
-Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
+Congratulations, you've stumbled upon our CLI Courier Service App Thing!
 
-For your final project, we'll be building a Command Line database application.
+## Installation Instructions
 
-## Project Requirements
+1. Fork this repo
+2. Run
+```ruby
+ruby bin/run.rb
+```
 
-### Option One - Data Analytics Project
+## Project Outline
+
+### Upon starting the app
+
+You'll be greeted with a login and signup page so use your arrow keys to select what you want to do.
+
+#### Log in
+
+Log in with your username and password and you'll be taken to your homepage.
+
+#### Sign up
+
+Alternatively, you can sign up and you'll be asked to provide the following details:
+-First name
+-Last name
+-Username
+-Password
+After filling in the basics you'll be asked to provide you what3words address. If you're not familiar with it, it's a service that maps the whole world in 3m x 3m "chunks", each accessible with a unique 3 words string like:
+-**stiff.little.finger**
+-**credit.card.denied**
+-**imaginary.future.partner**
+-**glorified.bodily.passage**
+-**Inflamed.flesh.massaged**
+
+You get the point.
+
+You'll be asked if you have your address, and if you don't you'll be redirected to the what3words website to find it, after which you can come back and fill it in.
+That will complete your registration and you'll be able to proceed to your homepage where you can access all the features of this amazing app.
+
+### Homepage
 
 1. Access a Sqlite3 Database using ActiveRecord.
 2. You should have at minimum three models including one join model. This means you must have a many-to-many relationship.

@@ -13,7 +13,7 @@
     align: :center,
     width: TTY::Screen.width,
     height: 20,
-    title: {top_left: ' DELIVERUU ', bottom_right: ' faster than DHL '},
+    title: {top_left: ' DELIVERUU ', bottom_right: ' faster than DHL ', top_right: ' built by Niki Nedelchev & Alex Shomalistos '},
     border: :thick
 )
 
