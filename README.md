@@ -43,12 +43,12 @@ That will complete your registration and you'll be able to proceed to your homep
 
 You have a few options here:
 
-- 1. Create a new delivery
-- 2. Check current delvieries
-- 3. Update delivery details
-- 4. Check past deliveries
-- 5. Cancel a current delivery
-- 6. Log out
+- Create a new delivery
+- Check current delvieries
+- Update delivery details
+- Check past deliveries
+- Cancel a current delivery
+- Log out
 
 #### Create a new delivery
 
