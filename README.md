@@ -38,7 +38,7 @@ You get the point.
 
 You'll be asked if you have your address, and if you don't you'll be redirected to the [what3words website](https://what3words.com/logs.broken.youth) to find it, after which you can come back and fill it in.
 That will complete your registration and you'll be able to proceed to your homepage where you can access all the features of this amazing app.
----
+
 ### Homepage
 
 You have a few options here:
@@ -85,11 +85,11 @@ You can cancel a delivery that's in transit by selecting a delivery from the lis
 #### Log out
 
 Pretty self explanatory - if you log out, the app is taken back to main screen, where you'll have the option to log back in, sign up with a new account, or quit the app which will close the terminal window (keep in mind you may be prompted to terminate the terminal process depending on your system preferences)
----
+
 ### Contributor's Guide
 
 If you wish to contribute to the app go for it.
----
+
 ### License
 
 License is available in the [License.md file](https://github.com/Ned-el-ch/module-one-final-project-guidelines-london-web-100719/blob/master/LICENSE.md).
