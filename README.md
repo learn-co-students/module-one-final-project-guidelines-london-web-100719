@@ -5,7 +5,11 @@ Congratulations, you've stumbled upon our CLI Courier Service App Thing!
 ## Installation Instructions
 
 1. Fork this repo
-2. Run
+2. Run bundle
+```ruby
+bundle
+```
+2. Run the file
 ```ruby
 ruby bin/run.rb
 ```
