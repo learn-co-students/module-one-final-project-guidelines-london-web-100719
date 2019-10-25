@@ -80,10 +80,10 @@ def get_distance_between(origin_address, dest_address)
     a_one = get_coordinates(origin_address)
     a_two = get_coordinates(dest_address)
     if a_one == "error" || a_two == "error"
-    puts "That is not a valid what3words address"
+      puts "That is not a valid what3words address"
     else
-    dist = Geocoder::Calculations.distance_between(a_one, a_two) * 1.609
-    dist.round(2)
+      dist = Geocoder::Calculations.distance_between(a_one, a_two) * 1.609
+      dist.round(2)
     end
 
 end
