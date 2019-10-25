@@ -1,5 +1,3 @@
 require_relative '../config/environment'
-
-
-
-puts "HELLO WORLD"
+ActiveRecord::Base.logger = nil
+app
