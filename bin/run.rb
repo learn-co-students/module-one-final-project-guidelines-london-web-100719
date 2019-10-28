@@ -1,5 +1,4 @@
 require_relative '../config/environment'
 
+run_main_menu
 
-
-puts "HELLO WORLD"
